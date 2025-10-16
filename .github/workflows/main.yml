@@ -15,7 +15,6 @@ jobs:
       matrix:
         ruby:
           - '3.1.7'
-
     steps:
     - uses: actions/checkout@v3
     - name: Set up Ruby
@@ -23,5 +22,7 @@ jobs:
       with:
         ruby-version: ${{ matrix.ruby }}
         bundler-cache: true
+    - name: Copy credentials file for CI
+      run: mv spec/credentials.example.yml spec/credentials.yml
     - name: Run the default task
       run: bundle exec rake
