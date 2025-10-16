@@ -6,10 +6,10 @@ module ActAsAgent
       base.extend(ClassMethods)
     end
 
-    def run(text: nil); end
+    def run(); end
 
     module ClassMethods
-      def llm_provider(llm:)
+      def tools(list)
         define_method(:tools) { list }
       end
     end
