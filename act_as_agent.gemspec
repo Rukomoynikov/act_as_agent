@@ -8,17 +8,17 @@ Gem::Specification.new do |spec|
   spec.authors = ["Max Rukomoynikov"]
   spec.email = ["rukomoynikov@gmail.com"]
 
-  spec.summary = "TODO: Write a short summary, because RubyGems requires one."
-  spec.description = "TODO: Write a longer description or delete this line."
-  spec.homepage = "TODO: Put your gem's website or public repo URL here."
+  spec.summary = "Your navigator to the world of agents."
+  spec.description = """
+  Build and manage AI agents with ease using ActAsAgent. This gem provides a robust framework for creating, configuring, and deploying intelligent agents that can perform tasks autonomously. Whether you're looking to automate workflows, enhance user interactions, or develop complex AI systems, ActAsAgent offers the tools and flexibility you need to bring your ideas to life.
+  """
+  spec.homepage = "https://github.com/Rukomoynikov/act_as_agent"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 2.6.0"
 
-  spec.metadata["allowed_push_host"] = "TODO: Set to your gem server 'https://example.com'"
-
   spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "TODO: Put your gem's public repo URL here."
-  spec.metadata["changelog_uri"] = "TODO: Put your gem's CHANGELOG.md URL here."
+  spec.metadata["source_code_uri"] = "https://github.com/Rukomoynikov/act_as_agent"
+  spec.metadata["changelog_uri"] = "https://github.com/Rukomoynikov/act_as_agent/blob/main/CHANGELOG.md"
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
