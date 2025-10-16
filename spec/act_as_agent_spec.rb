@@ -28,4 +28,28 @@ RSpec.describe ActAsAgent do
       end
     end
   end
+
+  describe ".tools" do
+    let(:class_with_tools) do
+      Class.new do
+        include ActAsAgent::Base
+
+        tools [:text_tool]
+      end
+    end
+
+    it "supports setting provider for agent" do
+      my_agent = class_with_tools.new
+
+      expect(my_agent.tools).to eq([:text_tool])
+    end
+
+    it "supports adding tools along the way" do
+      my_agent = class_with_tools.new
+
+      my_agent.tools << :new_super_tool
+
+      expect(my_agent.tools).to eq(%i[text_tool new_super_tool])
+    end
+  end
 end
