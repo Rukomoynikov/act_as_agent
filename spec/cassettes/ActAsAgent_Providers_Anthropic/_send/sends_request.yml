@@ -1,0 +1,169 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.anthropic.com/v1/messages
+    body:
+      encoding: UTF-8
+      string: '{"model":"claude-sonnet-4-5","messages":[{"role":"user","content":"Hello,
+        Anthropic!"}],"max_tokens":1024,"stream":false,"temperature":1.0,"tools":[{"name":"greet_user","description":"Greets
+        a user by their name.","input_schema":{"type":"object","properties":{"name":{"type":"string","description":"The
+        name of the user to greet."}},"required":["name"]}}]}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.anthropic.com
+      Content-Type:
+      - application/json
+      X-Api-Key: ''
+      Anthropic-Version:
+      - '2023-06-01'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 07 Nov 2025 21:45:19 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Anthropic-Ratelimit-Input-Tokens-Limit:
+      - '30000'
+      Anthropic-Ratelimit-Input-Tokens-Remaining:
+      - '30000'
+      Anthropic-Ratelimit-Input-Tokens-Reset:
+      - '2025-11-07T21:45:19Z'
+      Anthropic-Ratelimit-Output-Tokens-Limit:
+      - '8000'
+      Anthropic-Ratelimit-Output-Tokens-Remaining:
+      - '8000'
+      Anthropic-Ratelimit-Output-Tokens-Reset:
+      - '2025-11-07T21:45:19Z'
+      Anthropic-Ratelimit-Requests-Limit:
+      - '50'
+      Anthropic-Ratelimit-Requests-Remaining:
+      - '49'
+      Anthropic-Ratelimit-Requests-Reset:
+      - '2025-11-07T21:45:16Z'
+      Retry-After:
+      - '44'
+      Anthropic-Ratelimit-Tokens-Limit:
+      - '38000'
+      Anthropic-Ratelimit-Tokens-Remaining:
+      - '38000'
+      Anthropic-Ratelimit-Tokens-Reset:
+      - '2025-11-07T21:45:19Z'
+      Request-Id:
+      - req_011CUuG6jui8PWuTektB5Rq1
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Anthropic-Organization-Id:
+      - 8b653cd9-c45c-4336-9846-71fadad55730
+      X-Envoy-Upstream-Service-Time:
+      - '4288'
+      Cf-Cache-Status:
+      - DYNAMIC
+      X-Robots-Tag:
+      - none
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 99b0043e2ad43858-LHR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"model":"claude-sonnet-4-5-20250929","id":"msg_01UA6jjZJAAMnY61kKpJ9WXM","type":"message","role":"assistant","content":[{"type":"tool_use","id":"toolu_01EraKa5cFwpkGtAWbNZ8TLk","name":"greet_user","input":{"name":"Anthropic"}}],"stop_reason":"tool_use","stop_sequence":null,"usage":{"input_tokens":579,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"cache_creation":{"ephemeral_5m_input_tokens":0,"ephemeral_1h_input_tokens":0},"output_tokens":56,"service_tier":"standard"}}'
+  recorded_at: Fri, 07 Nov 2025 21:45:19 GMT
+- request:
+    method: post
+    uri: https://api.anthropic.com/v1/messages
+    body:
+      encoding: UTF-8
+      string: '{"model":"claude-sonnet-4-5","messages":[{"role":"user","content":"Hello,
+        Anthropic!"},{"role":"assistant","content":[{"type":"tool_use","id":"toolu_01EraKa5cFwpkGtAWbNZ8TLk","name":"greet_user","input":{"name":"Anthropic"}}]},{"role":"user","content":[{"type":"tool_result","tool_use_id":"toolu_01EraKa5cFwpkGtAWbNZ8TLk","content":"Hello,
+        Anthropic!"}]}],"max_tokens":1024,"stream":false,"temperature":1.0,"tools":[{"name":"greet_user","description":"Greets
+        a user by their name.","input_schema":{"type":"object","properties":{"name":{"type":"string","description":"The
+        name of the user to greet."}},"required":["name"]}}]}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.anthropic.com
+      Content-Type:
+      - application/json
+      X-Api-Key: ''
+      Anthropic-Version:
+      - '2023-06-01'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 07 Nov 2025 21:45:23 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Anthropic-Ratelimit-Input-Tokens-Limit:
+      - '30000'
+      Anthropic-Ratelimit-Input-Tokens-Remaining:
+      - '30000'
+      Anthropic-Ratelimit-Input-Tokens-Reset:
+      - '2025-11-07T21:45:23Z'
+      Anthropic-Ratelimit-Output-Tokens-Limit:
+      - '8000'
+      Anthropic-Ratelimit-Output-Tokens-Remaining:
+      - '8000'
+      Anthropic-Ratelimit-Output-Tokens-Reset:
+      - '2025-11-07T21:45:23Z'
+      Anthropic-Ratelimit-Requests-Limit:
+      - '50'
+      Anthropic-Ratelimit-Requests-Remaining:
+      - '49'
+      Anthropic-Ratelimit-Requests-Reset:
+      - '2025-11-07T21:45:20Z'
+      Retry-After:
+      - '39'
+      Anthropic-Ratelimit-Tokens-Limit:
+      - '38000'
+      Anthropic-Ratelimit-Tokens-Remaining:
+      - '38000'
+      Anthropic-Ratelimit-Tokens-Reset:
+      - '2025-11-07T21:45:23Z'
+      Request-Id:
+      - req_011CUuG74wCKraGuBpvaZybk
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Anthropic-Organization-Id:
+      - 8b653cd9-c45c-4336-9846-71fadad55730
+      X-Envoy-Upstream-Service-Time:
+      - '3363'
+      Cf-Cache-Status:
+      - DYNAMIC
+      X-Robots-Tag:
+      - none
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 99b00459fcd1c9aa-LHR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"model":"claude-sonnet-4-5-20250929","id":"msg_01DPUwAC5BDGZEfbNyHjK2Xv","type":"message","role":"assistant","content":[{"type":"text","text":"Hello!
+        How can I assist you today?"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":653,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"cache_creation":{"ephemeral_5m_input_tokens":0,"ephemeral_1h_input_tokens":0},"output_tokens":12,"service_tier":"standard"}}'
+  recorded_at: Fri, 07 Nov 2025 21:45:23 GMT
+recorded_with: VCR 6.3.1
