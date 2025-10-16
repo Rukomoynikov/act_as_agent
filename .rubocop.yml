@@ -12,6 +12,8 @@ Style/StringLiteralsInInterpolation:
 
 Layout/LineLength:
   Max: 120
+  Exclude:
+    - "act_as_agent.gemspec"
 
 Style/Documentation:
   Enabled: false
