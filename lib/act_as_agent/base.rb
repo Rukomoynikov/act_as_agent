@@ -9,6 +9,9 @@ module ActAsAgent
     def run(text: nil); end
 
     module ClassMethods
+      def llm_provider(llm:)
+        define_method(:tools) { list }
+      end
     end
   end
 end

@@ -16,4 +16,16 @@ RSpec.describe ActAsAgent do
       my_agent.run
     end
   end
+
+  describe ".llm_provider" do
+    let(:class_with_llm_provider) do
+      Class.new do
+        include ActAsAgent::Base
+
+        llm_provider ActAsAgent::Providers::OpenAi, with: {
+          key: "key"
+        }
+      end
+    end
+  end
 end
