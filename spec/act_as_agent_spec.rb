@@ -18,14 +18,21 @@ RSpec.describe ActAsAgent do
   end
 
   describe ".llm_provider" do
-    let(:class_with_llm_provider) do
+    let(:agent_with_llm_provider) do
       Class.new do
         include ActAsAgent::Base
 
-        llm_provider ActAsAgent::Providers::OpenAi, with: {
+        llm_provider ActAsAgent::Providers::Anthropic, with: {
           key: "key"
         }
       end
+    end
+
+    it "responds with correctly set llm provider" do
+      my_agent = agent_with_llm_provider.new
+
+      expect(my_agent.llm_provider).to eq(ActAsAgent::Providers::Anthropic)
+      expect(my_agent.llm_provider_options).to eq({ key: "key" })
     end
   end
 

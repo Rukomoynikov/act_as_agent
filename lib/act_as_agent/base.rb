@@ -12,6 +12,11 @@ module ActAsAgent
       def tools(list)
         define_method(:tools) { list }
       end
+
+      def llm_provider(klass, args)
+        define_method(:llm_provider) { klass }
+        define_method(:llm_provider_options) { args.fetch(:with) }
+      end
     end
   end
 end
