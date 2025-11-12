@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require "act_as_api_client"
-require "act_as_agent/providers/anthropic"
-
 module ActAsAgent
   module Base
     def self.included(base)
@@ -10,15 +7,15 @@ module ActAsAgent
     end
 
     def tools
-      @tools ||= self.tools_from_class
+      @tools ||= defined?(tools_from_class) ? tools_from_class : []
     end
 
     def llm_provider
-      @llm_provider ||= self.llm_provider_from_class
+      @llm_provider ||= defined?(llm_provider_from_class) ? llm_provider_from_class : nil
     end
 
     def llm_provider_options
-      @llm_provider_options ||= self.llm_provider_options_from_class
+      @llm_provider_options ||= defined?(llm_provider_options_from_class) ? llm_provider_options_from_class : nil
     end
 
     def run(); end

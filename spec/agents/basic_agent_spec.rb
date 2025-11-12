@@ -42,8 +42,8 @@ RSpec.describe "Basic agent" do
     end
   end
 
-  it "triggers the process"  do
-    agent = basic_agent.new()
+  it "triggers the process" do
+    agent = basic_agent.new
 
     p agent.tools
   end
