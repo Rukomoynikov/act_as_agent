@@ -7,8 +7,14 @@ module ActAsAgent
     class ListFiles
       ERROR = ActAsAgent::Errors::ToolIncorrectArgsError
 
+      attr_reader :root_folder
+
+      def initialize(root_folder: nil)
+        @root_folder = root_folder
+      end
+
       def name
-        self.to_s
+        self.class.to_s.gsub("::", "__")
       end
 
       def description
@@ -19,18 +25,20 @@ module ActAsAgent
         {
           type: "object",
           properties: {
-            root_folder: { type: "string", description: "The root folder of the list folder" },
+            root_folder: { type: "string",
+                           description: "The root folder of the list folder. By default it will use current folder." }
           },
-          required: ["root_folder"]
+          required: []
         }
       end
 
-      def run(**args)
+      def call(args = {})
         path = args.fetch(:path, nil)
 
-        return ERROR.new("Incorrect params have been given to list files tool") if path.nil? || path.chomp == ""
+        return Dir.glob(path) unless path.nil? || path.chomp == ""
+        return Dir.glob(root_folder) unless root_folder.nil?
 
-        Dir.glob(path)
+        ERROR.new("Incorrect params have been given to list files tool")
       end
     end
   end

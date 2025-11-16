@@ -42,7 +42,7 @@ RSpec.describe ActAsAgent::Providers::Anthropic do
 
   describe "#send", :vcr do
     it "sends request" do
-      provider.request(content: "Hello, Anthropic!")
+      provider.request(content: "Hello, anthropic!")
     end
   end
 end

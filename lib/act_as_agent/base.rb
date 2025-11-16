@@ -13,14 +13,13 @@ module ActAsAgent
     end
 
     def tools
-      @tools ||= self.class.instance_variable_get("@tools")
+      @tools ||= self.class.instance_variable_get("@tools") || []
     end
 
     def llm_provider
       klass = self.class.instance_variable_get("@llm_provider")
-
       @llm_provider ||= if klass == ActAsAgent::Providers::Anthropic
-                          key = (instance_variable_get("@llm_provider_options") || {}).fetch(:key, nil)
+                          key = llm_provider_options.fetch(:key, nil)
                           ActAsAgent::Providers::Anthropic.new(tools: tools, key: key)
                         end
     end

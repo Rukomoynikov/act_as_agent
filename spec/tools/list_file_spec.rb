@@ -23,7 +23,7 @@ RSpec.describe ActAsAgent::Tools::ListFiles do
 
       it "returns list of files" do
         expect(
-          subject.run(path: looked_path).length
+          subject.call(path: looked_path).length
         ).to eq(2)
       end
     end
@@ -34,7 +34,7 @@ RSpec.describe ActAsAgent::Tools::ListFiles do
       expected_error = ActAsAgent::Errors::ToolIncorrectArgsError
                        .new("Incorrect params have been given to list files tool")
 
-      expect(subject.run).to eq(expected_error)
+      expect(subject.call).to eq(expected_error)
     end
   end
 end

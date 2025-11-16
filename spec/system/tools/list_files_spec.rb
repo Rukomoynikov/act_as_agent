@@ -11,11 +11,9 @@ class MyDairyAgent
   llm_provider ActAsAgent::Providers::Anthropic, with: {
     key: YAML.load_file("spec/credentials.yml").dig("anthropic", "messages", "x-api-key")
   }
-
-  tools [ActAsAgent::Tools::ListFiles.new()]
 end
 
-RSpec.describe ActAsAgent::Tools::ListFiles do
+RSpec.describe ActAsAgent::Tools::ListFiles, :vcr do
   context "when param path is passed" do
     let(:tmp_dir) { Dir.mktmpdir }
 
@@ -36,7 +34,8 @@ RSpec.describe ActAsAgent::Tools::ListFiles do
 
       it "returns list of files" do
         agent = MyDairyAgent.new
-        agent.run(task: "Please summarize info about me")
+        agent.tools << ActAsAgent::Tools::ListFiles.new(root_folder: File.join(tmp_dir, "**/*.*"))
+        agent.run(task: "Please get me list of files (make it in markdown format).")
       end
     end
   end

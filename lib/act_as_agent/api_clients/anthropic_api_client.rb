@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "act_as_api_client"
 
 module ActAsAgent

@@ -5,10 +5,10 @@ http_interactions:
     uri: https://api.anthropic.com/v1/messages
     body:
       encoding: UTF-8
-      string: '{"model":"claude-sonnet-4-5","messages":[{"role":"user","content":"Hello,
-        anthropic!"}],"max_tokens":1024,"stream":false,"temperature":1.0,"tools":[{"name":"greet_user","description":"Greets
-        a user by their name.","input_schema":{"type":"object","properties":{"name":{"type":"string","description":"The
-        name of the user to greet."}},"required":["name"]}}]}'
+      string: '{"model":"claude-sonnet-4-5","messages":[{"role":"user","content":"Please
+        get me list of files (make it in markdown format)."}],"max_tokens":1024,"stream":false,"temperature":1.0,"tools":[{"name":"ActAsAgent__Tools__ListFiles","description":"List
+        files in the directory and all subdirectories. Pass the path to lookup","input_schema":{"type":"object","properties":{"root_folder":{"type":"string","description":"The
+        root folder of the list folder. By default it will use current folder."}},"required":[]}}]}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -29,7 +29,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 07 Nov 2025 21:45:19 GMT
+      - Sun, 16 Nov 2025 17:39:24 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -41,35 +41,35 @@ http_interactions:
       Anthropic-Ratelimit-Input-Tokens-Remaining:
       - '30000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-11-07T21:45:19Z'
+      - '2025-11-16T17:39:24Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '8000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '8000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-11-07T21:45:19Z'
+      - '2025-11-16T17:39:24Z'
       Anthropic-Ratelimit-Requests-Limit:
       - '50'
       Anthropic-Ratelimit-Requests-Remaining:
       - '49'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-11-07T21:45:16Z'
+      - '2025-11-16T17:39:22Z'
       Retry-After:
-      - '44'
+      - '37'
       Anthropic-Ratelimit-Tokens-Limit:
       - '38000'
       Anthropic-Ratelimit-Tokens-Remaining:
       - '38000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-11-07T21:45:19Z'
+      - '2025-11-16T17:39:24Z'
       Request-Id:
-      - req_011CUuG6jui8PWuTektB5Rq1
+      - req_011CVBydRmzapggAWTZT2BwX
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Anthropic-Organization-Id:
       - 8b653cd9-c45c-4336-9846-71fadad55730
       X-Envoy-Upstream-Service-Time:
-      - '4288'
+      - '2590'
       Cf-Cache-Status:
       - DYNAMIC
       X-Robots-Tag:
@@ -77,21 +77,21 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 99b0043e2ad43858-LHR
+      - 99f8c46bed6276c3-LHR
     body:
       encoding: ASCII-8BIT
-      string: '{"model":"claude-sonnet-4-5-20250929","id":"msg_01UA6jjZJAAMnY61kKpJ9WXM","type":"message","role":"assistant","content":[{"type":"tool_use","id":"toolu_01EraKa5cFwpkGtAWbNZ8TLk","name":"greet_user","input":{"name":"anthropic"}}],"stop_reason":"tool_use","stop_sequence":null,"usage":{"input_tokens":579,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"cache_creation":{"ephemeral_5m_input_tokens":0,"ephemeral_1h_input_tokens":0},"output_tokens":56,"service_tier":"standard"}}'
-  recorded_at: Fri, 07 Nov 2025 21:45:19 GMT
+      string: '{"model":"claude-sonnet-4-5-20250929","id":"msg_01MQQsquPWCujooQ22kKvXWb","type":"message","role":"assistant","content":[{"type":"text","text":"I''ll
+        list the files in the current directory and format them in markdown for you."},{"type":"tool_use","id":"toolu_01EP66LLP3cNRj2NkHKumt4n","name":"ActAsAgent__Tools__ListFiles","input":{}}],"stop_reason":"tool_use","stop_sequence":null,"usage":{"input_tokens":605,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"cache_creation":{"ephemeral_5m_input_tokens":0,"ephemeral_1h_input_tokens":0},"output_tokens":59,"service_tier":"standard"}}'
+  recorded_at: Sun, 16 Nov 2025 17:39:24 GMT
 - request:
     method: post
     uri: https://api.anthropic.com/v1/messages
     body:
       encoding: UTF-8
-      string: '{"model":"claude-sonnet-4-5","messages":[{"role":"user","content":"Hello,
-        anthropic!"},{"role":"assistant","content":[{"type":"tool_use","id":"toolu_01EraKa5cFwpkGtAWbNZ8TLk","name":"greet_user","input":{"name":"anthropic"}}]},{"role":"user","content":[{"type":"tool_result","tool_use_id":"toolu_01EraKa5cFwpkGtAWbNZ8TLk","content":"Hello,
-        anthropic!"}]}],"max_tokens":1024,"stream":false,"temperature":1.0,"tools":[{"name":"greet_user","description":"Greets
-        a user by their name.","input_schema":{"type":"object","properties":{"name":{"type":"string","description":"The
-        name of the user to greet."}},"required":["name"]}}]}'
+      string: '{"model":"claude-sonnet-4-5","messages":[{"role":"user","content":"Please
+        get me list of files (make it in markdown format)."},{"role":"assistant","content":[{"type":"tool_use","id":"toolu_01EP66LLP3cNRj2NkHKumt4n","name":"ActAsAgent__Tools__ListFiles","input":{}}]},{"role":"user","content":[{"type":"tool_result","tool_use_id":"toolu_01EP66LLP3cNRj2NkHKumt4n","content":"[\"/var/folders/38/gv19_k_12ng_m2fyg7k9ztqh0000gn/T/d20251116-8461-25ryi8/nested_folder/file_nested.txt20251116-8461-x4yped\"]"}]}],"max_tokens":1024,"stream":false,"temperature":1.0,"tools":[{"name":"ActAsAgent__Tools__ListFiles","description":"List
+        files in the directory and all subdirectories. Pass the path to lookup","input_schema":{"type":"object","properties":{"root_folder":{"type":"string","description":"The
+        root folder of the list folder. By default it will use current folder."}},"required":[]}}]}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -112,7 +112,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 07 Nov 2025 21:45:23 GMT
+      - Sun, 16 Nov 2025 17:39:27 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -124,35 +124,35 @@ http_interactions:
       Anthropic-Ratelimit-Input-Tokens-Remaining:
       - '30000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-11-07T21:45:23Z'
+      - '2025-11-16T17:39:26Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '8000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '8000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-11-07T21:45:23Z'
+      - '2025-11-16T17:39:27Z'
       Anthropic-Ratelimit-Requests-Limit:
       - '50'
       Anthropic-Ratelimit-Requests-Remaining:
       - '49'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-11-07T21:45:20Z'
+      - '2025-11-16T17:39:25Z'
       Retry-After:
-      - '39'
+      - '35'
       Anthropic-Ratelimit-Tokens-Limit:
       - '38000'
       Anthropic-Ratelimit-Tokens-Remaining:
       - '38000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-11-07T21:45:23Z'
+      - '2025-11-16T17:39:26Z'
       Request-Id:
-      - req_011CUuG74wCKraGuBpvaZybk
+      - req_011CVByddiLwdEiNDWtpZSVi
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Anthropic-Organization-Id:
       - 8b653cd9-c45c-4336-9846-71fadad55730
       X-Envoy-Upstream-Service-Time:
-      - '3363'
+      - '2732'
       Cf-Cache-Status:
       - DYNAMIC
       X-Robots-Tag:
@@ -160,10 +160,10 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 99b00459fcd1c9aa-LHR
+      - 99f8c47d6aa394e4-LHR
     body:
       encoding: ASCII-8BIT
-      string: '{"model":"claude-sonnet-4-5-20250929","id":"msg_01DPUwAC5BDGZEfbNyHjK2Xv","type":"message","role":"assistant","content":[{"type":"text","text":"Hello!
-        How can I assist you today?"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":653,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"cache_creation":{"ephemeral_5m_input_tokens":0,"ephemeral_1h_input_tokens":0},"output_tokens":12,"service_tier":"standard"}}'
-  recorded_at: Fri, 07 Nov 2025 21:45:23 GMT
+      string: '{"model":"claude-sonnet-4-5-20250929","id":"msg_01Ar84xJ8LENdCxRjeb9oPQg","type":"message","role":"assistant","content":[{"type":"text","text":"#
+        File List\n\n- `/var/folders/38/gv19_k_12ng_m2fyg7k9ztqh0000gn/T/d20251116-8461-25ryi8/nested_folder/file_nested.txt20251116-8461-x4yped`"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":727,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"cache_creation":{"ephemeral_5m_input_tokens":0,"ephemeral_1h_input_tokens":0},"output_tokens":76,"service_tier":"standard"}}'
+  recorded_at: Sun, 16 Nov 2025 17:39:27 GMT
 recorded_with: VCR 6.3.1
