@@ -6,28 +6,35 @@ module ActAsAgent
       base.extend(ClassMethods)
     end
 
+    def run(args)
+      llm_provider.request(content: args[:task])
+    end
+
     def tools
-      @tools ||= defined?(tools_from_class) ? tools_from_class : []
+      @tools ||= self.class.instance_variable_get("@tools")
     end
 
     def llm_provider
-      @llm_provider ||= defined?(llm_provider_from_class) ? llm_provider_from_class : nil
+      klass = self.class.instance_variable_get("@llm_provider")
+
+      @llm_provider ||= if klass == ActAsAgent::Providers::Anthropic
+                          key = (instance_variable_get("@llm_provider_options") || {}).fetch(:key, nil)
+                          ActAsAgent::Providers::Anthropic.new(tools: tools, key: key)
+                        end
     end
 
     def llm_provider_options
-      @llm_provider_options ||= defined?(llm_provider_options_from_class) ? llm_provider_options_from_class : nil
+      @llm_provider_options ||= self.class.instance_variable_get("@llm_provider_options")
     end
 
-    def run(); end
-
     module ClassMethods
-      def tools(list)
-        define_method(:tools_from_class) { list || [] }
+      def tools(tls)
+        instance_variable_set("@tools", tls)
       end
 
       def llm_provider(klass, args)
-        define_method(:llm_provider_from_class) { klass }
-        define_method(:llm_provider_options_from_class) { args.fetch(:with) }
+        instance_variable_set("@llm_provider", klass)
+        instance_variable_set("@llm_provider_options", args)
       end
     end
   end
