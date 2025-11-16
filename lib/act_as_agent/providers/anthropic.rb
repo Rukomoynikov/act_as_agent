@@ -2,6 +2,7 @@
 
 # https://docs.claude.com/en/api/messages#body-tools
 # https://docs.claude.com/en/docs/agents-and-tools/tool-use/overview#tool-use-examples
+require "act_as_agent/api_clients/anthropic_api_client"
 
 module ActAsAgent
   module Providers
@@ -14,7 +15,7 @@ module ActAsAgent
         @config = { key: key, max_tokens: max_tokens }
         @tools = tools
         @max_tokens = max_tokens
-        @client = AnthropicClient.new(key: key, max_tokens: max_tokens)
+        @client = ActAsAgent::ApiClients::AnthropicClient.new(key: key, max_tokens: max_tokens)
       end
 
       # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
@@ -74,16 +75,5 @@ module ActAsAgent
         end
       end
     end
-  end
-end
-
-class AnthropicClient < ApiClient
-  act_as_api_client for: %i[anthropic messages]
-
-  def initialize(key:, max_tokens:)
-    super()
-
-    options[:x_api_key] = key
-    options[:max_tokens] = max_tokens
   end
 end
