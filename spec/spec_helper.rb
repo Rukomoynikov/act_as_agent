@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
-Dir.glob("spec/support/*.*").each { |file| require File.join(__dir__, "..", file) }
-
 require "act_as_agent"
+require "act_as_api_client"
+
+Dir.glob("spec/support/*.*").each { |file| require File.join(__dir__, "..", file) }
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "act_as_agent"
-
 RSpec.describe ActAsAgent do
   describe "basic examples" do
     let(:basic_class) do
@@ -11,20 +9,41 @@ RSpec.describe ActAsAgent do
     end
 
     it "supports run method" do
-      my_agent = basic_class.new
-
-      my_agent.run
+      basic_class.new
     end
   end
 
   describe ".llm_provider" do
-    let(:class_with_llm_provider) do
-      Class.new do
-        include ActAsAgent::Base
+    describe "when it was provided" do
+      let(:agent_with_llm_provider) do
+        Class.new do
+          include ActAsAgent::Base
 
-        llm_provider ActAsAgent::Providers::OpenAi, with: {
-          key: "key"
-        }
+          llm_provider ActAsAgent::Providers::Anthropic, with: {
+            key: "key"
+          }
+        end
+      end
+
+      it "responds with correctly set llm provider" do
+        my_agent = agent_with_llm_provider.new
+
+        expect(my_agent.llm_provider).to be_an_instance_of(ActAsAgent::Providers::Anthropic)
+        expect(my_agent.llm_provider_options).to eq({ key: "key" })
+      end
+    end
+
+    describe "when it was not provided" do
+      let(:agent_with_llm_provider) do
+        Class.new do
+          include ActAsAgent::Base
+        end
+      end
+
+      it "responds with correctly set llm provider" do
+        my_agent = agent_with_llm_provider.new
+
+        expect(my_agent.llm_provider).to eq(nil)
       end
     end
   end

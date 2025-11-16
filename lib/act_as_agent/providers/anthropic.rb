@@ -2,6 +2,8 @@
 
 # https://docs.claude.com/en/api/messages#body-tools
 # https://docs.claude.com/en/docs/agents-and-tools/tool-use/overview#tool-use-examples
+require "act_as_agent/api_clients/anthropic_api_client"
+require "act_as_agent/errors/providers/anthropic/authentication_error"
 
 module ActAsAgent
   module Providers
@@ -14,10 +16,10 @@ module ActAsAgent
         @config = { key: key, max_tokens: max_tokens }
         @tools = tools
         @max_tokens = max_tokens
-        @client = AnthropicClient.new(key: key, max_tokens: max_tokens)
+        @client = ActAsAgent::ApiClients::AnthropicClient.new(key: key, max_tokens: max_tokens)
       end
 
-      # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
+      # rubocop:disable Metrics/MethodLength, Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
       def request(content:)
         content = [{ role: "user", content: content }] unless content.is_a?(Array)
 
@@ -27,6 +29,13 @@ module ActAsAgent
           tools: tools_payload,
           max_tokens: max_tokens
         )
+
+        if response["type"] == "error"
+          case response["error"]["type"]
+          when "authentication_error"
+            return ActAsAgent::Errors::Providers::AuthenticationError
+          end
+        end
 
         tool_responses = []
 
@@ -49,7 +58,7 @@ module ActAsAgent
                 {
                   type: "tool_result",
                   tool_use_id: message["id"],
-                  content: tool.call(message["input"])
+                  content: tool.call(message["input"]).to_s
                 }
               ]
             }
@@ -60,7 +69,7 @@ module ActAsAgent
 
         response["content"]
       end
-      # rubocop:enable Metrics/MethodLength, Metrics/AbcSize
+      # rubocop:enable Metrics/MethodLength, Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
 
       private
 
@@ -74,16 +83,5 @@ module ActAsAgent
         end
       end
     end
-  end
-end
-
-class AnthropicClient < ApiClient
-  act_as_api_client for: %i[anthropic messages]
-
-  def initialize(key:, max_tokens:)
-    super()
-
-    options[:x_api_key] = key
-    options[:max_tokens] = max_tokens
   end
 end
