@@ -29,7 +29,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 16 Nov 2025 17:39:24 GMT
+      - Sun, 16 Nov 2025 18:27:05 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -41,35 +41,35 @@ http_interactions:
       Anthropic-Ratelimit-Input-Tokens-Remaining:
       - '30000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-11-16T17:39:24Z'
+      - '2025-11-16T18:27:05Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '8000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '8000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-11-16T17:39:24Z'
+      - '2025-11-16T18:27:06Z'
       Anthropic-Ratelimit-Requests-Limit:
       - '50'
       Anthropic-Ratelimit-Requests-Remaining:
       - '49'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-11-16T17:39:22Z'
+      - '2025-11-16T18:27:04Z'
       Retry-After:
-      - '37'
+      - '59'
       Anthropic-Ratelimit-Tokens-Limit:
       - '38000'
       Anthropic-Ratelimit-Tokens-Remaining:
       - '38000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-11-16T17:39:24Z'
+      - '2025-11-16T18:27:05Z'
       Request-Id:
-      - req_011CVBydRmzapggAWTZT2BwX
+      - req_011CVC3GN1Aia5gf9XGtqeMo
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Anthropic-Organization-Id:
       - 8b653cd9-c45c-4336-9846-71fadad55730
       X-Envoy-Upstream-Service-Time:
-      - '2590'
+      - '2605'
       Cf-Cache-Status:
       - DYNAMIC
       X-Robots-Tag:
@@ -77,19 +77,20 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 99f8c46bed6276c3-LHR
+      - 99f90a484c11f658-LHR
     body:
       encoding: ASCII-8BIT
-      string: '{"model":"claude-sonnet-4-5-20250929","id":"msg_01MQQsquPWCujooQ22kKvXWb","type":"message","role":"assistant","content":[{"type":"text","text":"I''ll
-        list the files in the current directory and format them in markdown for you."},{"type":"tool_use","id":"toolu_01EP66LLP3cNRj2NkHKumt4n","name":"ActAsAgent__Tools__ListFiles","input":{}}],"stop_reason":"tool_use","stop_sequence":null,"usage":{"input_tokens":605,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"cache_creation":{"ephemeral_5m_input_tokens":0,"ephemeral_1h_input_tokens":0},"output_tokens":59,"service_tier":"standard"}}'
-  recorded_at: Sun, 16 Nov 2025 17:39:24 GMT
+      string: '{"model":"claude-sonnet-4-5-20250929","id":"msg_01BjMwSGd5Xs1hPFE1CYmTNC","type":"message","role":"assistant","content":[{"type":"text","text":"I''ll
+        list the files for you in markdown format."},{"type":"tool_use","id":"toolu_01UwGtGH8nBpsMoceEWVbmoS","name":"ActAsAgent__Tools__ListFiles","input":{}}],"stop_reason":"tool_use","stop_sequence":null,"usage":{"input_tokens":605,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"cache_creation":{"ephemeral_5m_input_tokens":0,"ephemeral_1h_input_tokens":0},"output_tokens":53,"service_tier":"standard"}}'
+  recorded_at: Sun, 16 Nov 2025 18:27:05 GMT
 - request:
     method: post
     uri: https://api.anthropic.com/v1/messages
     body:
       encoding: UTF-8
       string: '{"model":"claude-sonnet-4-5","messages":[{"role":"user","content":"Please
-        get me list of files (make it in markdown format)."},{"role":"assistant","content":[{"type":"tool_use","id":"toolu_01EP66LLP3cNRj2NkHKumt4n","name":"ActAsAgent__Tools__ListFiles","input":{}}]},{"role":"user","content":[{"type":"tool_result","tool_use_id":"toolu_01EP66LLP3cNRj2NkHKumt4n","content":"[\"/var/folders/38/gv19_k_12ng_m2fyg7k9ztqh0000gn/T/d20251116-8461-25ryi8/nested_folder/file_nested.txt20251116-8461-x4yped\"]"}]}],"max_tokens":1024,"stream":false,"temperature":1.0,"tools":[{"name":"ActAsAgent__Tools__ListFiles","description":"List
+        get me list of files (make it in markdown format)."},{"role":"assistant","content":[{"type":"tool_use","id":"toolu_01UwGtGH8nBpsMoceEWVbmoS","name":"ActAsAgent__Tools__ListFiles","input":{}}]},{"role":"user","content":[{"type":"tool_result","tool_use_id":"toolu_01UwGtGH8nBpsMoceEWVbmoS","content":"[\"/var/folders/38/gv19_k_12ng_m2fyg7k9ztqh0000gn/T/d20251116-12369-2ybmy7/diary.txt20251116-12369-yan3h6\",
+        \"/var/folders/38/gv19_k_12ng_m2fyg7k9ztqh0000gn/T/d20251116-12369-2ybmy7/nested_folder/file_nested.txt20251116-12369-dzwy00\"]"}]}],"max_tokens":1024,"stream":false,"temperature":1.0,"tools":[{"name":"ActAsAgent__Tools__ListFiles","description":"List
         files in the directory and all subdirectories. Pass the path to lookup","input_schema":{"type":"object","properties":{"root_folder":{"type":"string","description":"The
         root folder of the list folder. By default it will use current folder."}},"required":[]}}]}'
     headers:
@@ -112,7 +113,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 16 Nov 2025 17:39:27 GMT
+      - Sun, 16 Nov 2025 18:27:09 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -124,35 +125,35 @@ http_interactions:
       Anthropic-Ratelimit-Input-Tokens-Remaining:
       - '30000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-11-16T17:39:26Z'
+      - '2025-11-16T18:27:08Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '8000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '8000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-11-16T17:39:27Z'
+      - '2025-11-16T18:27:09Z'
       Anthropic-Ratelimit-Requests-Limit:
       - '50'
       Anthropic-Ratelimit-Requests-Remaining:
       - '49'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-11-16T17:39:25Z'
+      - '2025-11-16T18:27:07Z'
       Retry-After:
-      - '35'
+      - '53'
       Anthropic-Ratelimit-Tokens-Limit:
       - '38000'
       Anthropic-Ratelimit-Tokens-Remaining:
       - '38000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-11-16T17:39:26Z'
+      - '2025-11-16T18:27:08Z'
       Request-Id:
-      - req_011CVByddiLwdEiNDWtpZSVi
+      - req_011CVC3GZtY9aiG7nc3Y6kzm
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Anthropic-Organization-Id:
       - 8b653cd9-c45c-4336-9846-71fadad55730
       X-Envoy-Upstream-Service-Time:
-      - '2732'
+      - '3281'
       Cf-Cache-Status:
       - DYNAMIC
       X-Robots-Tag:
@@ -160,10 +161,12 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 99f8c47d6aa394e4-LHR
+      - 99f90a59c81f5667-LHR
     body:
       encoding: ASCII-8BIT
-      string: '{"model":"claude-sonnet-4-5-20250929","id":"msg_01Ar84xJ8LENdCxRjeb9oPQg","type":"message","role":"assistant","content":[{"type":"text","text":"#
-        File List\n\n- `/var/folders/38/gv19_k_12ng_m2fyg7k9ztqh0000gn/T/d20251116-8461-25ryi8/nested_folder/file_nested.txt20251116-8461-x4yped`"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":727,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"cache_creation":{"ephemeral_5m_input_tokens":0,"ephemeral_1h_input_tokens":0},"output_tokens":76,"service_tier":"standard"}}'
-  recorded_at: Sun, 16 Nov 2025 17:39:27 GMT
+      string: '{"model":"claude-sonnet-4-5-20250929","id":"msg_01SCyqg4YQrCv3LY4JFQaZcs","type":"message","role":"assistant","content":[{"type":"text","text":"#
+        File List\n\n## Root Directory\n- `diary.txt20251116-12369-yan3h6`\n\n## Subdirectory:
+        nested_folder/\n- `file_nested.txt20251116-12369-dzwy00`\n\n---\n\n**Total
+        Files:** 2"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":790,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"cache_creation":{"ephemeral_5m_input_tokens":0,"ephemeral_1h_input_tokens":0},"output_tokens":67,"service_tier":"standard"}}'
+  recorded_at: Sun, 16 Nov 2025 18:27:09 GMT
 recorded_with: VCR 6.3.1

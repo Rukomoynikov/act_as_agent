@@ -37,6 +37,8 @@ module ActAsAgent
           end
         end
 
+        return response if response["stop_reason"] == "end_turn"
+
         tool_responses = []
 
         response["content"].each do |message|
@@ -66,8 +68,6 @@ module ActAsAgent
         end
 
         request(content: content + tool_responses) unless tool_responses.empty?
-
-        response["content"]
       end
       # rubocop:enable Metrics/MethodLength, Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
 
