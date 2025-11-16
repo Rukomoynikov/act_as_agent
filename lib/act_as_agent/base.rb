@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "act_as_agent/providers/anthropic"
+
 module ActAsAgent
   module Base
     def self.included(base)
@@ -34,7 +36,7 @@ module ActAsAgent
 
       def llm_provider(klass, args)
         instance_variable_set("@llm_provider", klass)
-        instance_variable_set("@llm_provider_options", args)
+        instance_variable_set("@llm_provider_options", args.fetch(:with, {}))
       end
     end
   end

@@ -7,6 +7,24 @@ module ActAsAgent
     class ListFiles
       ERROR = ActAsAgent::Errors::ToolIncorrectArgsError
 
+      def name
+        self.to_s
+      end
+
+      def description
+        "List files in the directory and all subdirectories. Pass the path to lookup"
+      end
+
+      def input_schema
+        {
+          type: "object",
+          properties: {
+            root_folder: { type: "string", description: "The root folder of the list folder" },
+          },
+          required: ["root_folder"]
+        }
+      end
+
       def run(**args)
         path = args.fetch(:path, nil)
 

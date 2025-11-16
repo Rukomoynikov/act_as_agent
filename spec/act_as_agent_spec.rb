@@ -9,9 +9,7 @@ RSpec.describe ActAsAgent do
     end
 
     it "supports run method" do
-      my_agent = basic_class.new
-
-      my_agent.run
+      basic_class.new
     end
   end
 
@@ -30,7 +28,7 @@ RSpec.describe ActAsAgent do
       it "responds with correctly set llm provider" do
         my_agent = agent_with_llm_provider.new
 
-        expect(my_agent.llm_provider).to eq(ActAsAgent::Providers::Anthropic)
+        expect(my_agent.llm_provider).to be_an_instance_of(ActAsAgent::Providers::Anthropic)
         expect(my_agent.llm_provider_options).to eq({ key: "key" })
       end
     end

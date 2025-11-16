@@ -1,3 +1,5 @@
+require "act_as_api_client"
+
 module ActAsAgent
   module ApiClients
     class AnthropicClient < ApiClient
