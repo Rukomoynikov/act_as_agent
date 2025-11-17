@@ -18,7 +18,7 @@ RSpec.describe ActAsAgent::Tools::ReadFile do
   describe "when glob parameter is passed" do
     it "returns list of files" do
       expect(
-        subject.call(file_path: temp_file_path)
+        subject.call({ "file_path" => temp_file_path })
       ).to eq(file_content)
     end
   end

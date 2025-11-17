@@ -1,0 +1,281 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.anthropic.com/v1/messages
+    body:
+      encoding: UTF-8
+      string: '{"model":"claude-sonnet-4-5","messages":[{"role":"user","content":"Please
+        read my files (it''s my diary) and give me an advice"}],"max_tokens":1024,"stream":false,"temperature":1.0,"tools":[{"name":"ActAsAgent__Tools__ListFiles","description":"List
+        files in the directory and all subdirectories. Pass the path to lookup","input_schema":{"type":"object","properties":{"root_folder":{"type":"string","description":"The
+        root folder of the list folder. By default it will use current folder."}},"required":[]}},{"name":"ActAsAgent__Tools__ReadFile","description":"Read
+        file by the given path","input_schema":{"type":"object","properties":{"file_path":{"type":"string","description":"File
+        path to read"}},"required":[]}}]}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.anthropic.com
+      Content-Type:
+      - application/json
+      X-Api-Key: ''
+      Anthropic-Version:
+      - '2023-06-01'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 17 Nov 2025 18:21:30 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Anthropic-Ratelimit-Input-Tokens-Limit:
+      - '30000'
+      Anthropic-Ratelimit-Input-Tokens-Remaining:
+      - '30000'
+      Anthropic-Ratelimit-Input-Tokens-Reset:
+      - '2025-11-17T18:21:29Z'
+      Anthropic-Ratelimit-Output-Tokens-Limit:
+      - '8000'
+      Anthropic-Ratelimit-Output-Tokens-Remaining:
+      - '8000'
+      Anthropic-Ratelimit-Output-Tokens-Reset:
+      - '2025-11-17T18:21:30Z'
+      Anthropic-Ratelimit-Requests-Limit:
+      - '50'
+      Anthropic-Ratelimit-Requests-Remaining:
+      - '49'
+      Anthropic-Ratelimit-Requests-Reset:
+      - '2025-11-17T18:21:28Z'
+      Retry-After:
+      - '31'
+      Anthropic-Ratelimit-Tokens-Limit:
+      - '38000'
+      Anthropic-Ratelimit-Tokens-Remaining:
+      - '38000'
+      Anthropic-Ratelimit-Tokens-Reset:
+      - '2025-11-17T18:21:29Z'
+      Request-Id:
+      - req_011CVDveYYUbBrgNcWircZRm
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Anthropic-Organization-Id:
+      - 8b653cd9-c45c-4336-9846-71fadad55730
+      X-Envoy-Upstream-Service-Time:
+      - '2338'
+      Cf-Cache-Status:
+      - DYNAMIC
+      X-Robots-Tag:
+      - none
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a013f7759e4cd0a-LHR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"model":"claude-sonnet-4-5-20250929","id":"msg_01NoPEaiFkFz3Vp3XiYa5LQ6","type":"message","role":"assistant","content":[{"type":"text","text":"I''ll
+        help you read your diary files and give you advice. Let me first see what
+        files you have."},{"type":"tool_use","id":"toolu_015e4ncCP5jjXUr7pyH4HFSm","name":"ActAsAgent__Tools__ListFiles","input":{}}],"stop_reason":"tool_use","stop_sequence":null,"usage":{"input_tokens":675,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"cache_creation":{"ephemeral_5m_input_tokens":0,"ephemeral_1h_input_tokens":0},"output_tokens":64,"service_tier":"standard"}}'
+  recorded_at: Mon, 17 Nov 2025 18:21:30 GMT
+- request:
+    method: post
+    uri: https://api.anthropic.com/v1/messages
+    body:
+      encoding: UTF-8
+      string: '{"model":"claude-sonnet-4-5","messages":[{"role":"user","content":"Please
+        read my files (it''s my diary) and give me an advice"},{"role":"assistant","content":[{"type":"tool_use","id":"toolu_015e4ncCP5jjXUr7pyH4HFSm","name":"ActAsAgent__Tools__ListFiles","input":{}}]},{"role":"user","content":[{"type":"tool_result","tool_use_id":"toolu_015e4ncCP5jjXUr7pyH4HFSm","content":"[\"/var/folders/38/gv19_k_12ng_m2fyg7k9ztqh0000gn/T/d20251117-7998-4m53b3/diary.txt20251117-7998-mzpzu7\",
+        \"/var/folders/38/gv19_k_12ng_m2fyg7k9ztqh0000gn/T/d20251117-7998-4m53b3/nested_folder/file_nested.txt20251117-7998-i0zag7\"]"}]}],"max_tokens":1024,"stream":false,"temperature":1.0,"tools":[{"name":"ActAsAgent__Tools__ListFiles","description":"List
+        files in the directory and all subdirectories. Pass the path to lookup","input_schema":{"type":"object","properties":{"root_folder":{"type":"string","description":"The
+        root folder of the list folder. By default it will use current folder."}},"required":[]}},{"name":"ActAsAgent__Tools__ReadFile","description":"Read
+        file by the given path","input_schema":{"type":"object","properties":{"file_path":{"type":"string","description":"File
+        path to read"}},"required":[]}}]}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.anthropic.com
+      Content-Type:
+      - application/json
+      X-Api-Key: ''
+      Anthropic-Version:
+      - '2023-06-01'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 17 Nov 2025 18:21:33 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Anthropic-Ratelimit-Input-Tokens-Limit:
+      - '30000'
+      Anthropic-Ratelimit-Input-Tokens-Remaining:
+      - '30000'
+      Anthropic-Ratelimit-Input-Tokens-Reset:
+      - '2025-11-17T18:21:33Z'
+      Anthropic-Ratelimit-Output-Tokens-Limit:
+      - '8000'
+      Anthropic-Ratelimit-Output-Tokens-Remaining:
+      - '8000'
+      Anthropic-Ratelimit-Output-Tokens-Reset:
+      - '2025-11-17T18:21:35Z'
+      Anthropic-Ratelimit-Requests-Limit:
+      - '50'
+      Anthropic-Ratelimit-Requests-Remaining:
+      - '49'
+      Anthropic-Ratelimit-Requests-Reset:
+      - '2025-11-17T18:21:31Z'
+      Retry-After:
+      - '29'
+      Anthropic-Ratelimit-Tokens-Limit:
+      - '38000'
+      Anthropic-Ratelimit-Tokens-Remaining:
+      - '38000'
+      Anthropic-Ratelimit-Tokens-Reset:
+      - '2025-11-17T18:21:33Z'
+      Request-Id:
+      - req_011CVDvejTZAZDwEv5LhdoiX
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Anthropic-Organization-Id:
+      - 8b653cd9-c45c-4336-9846-71fadad55730
+      X-Envoy-Upstream-Service-Time:
+      - '3640'
+      Cf-Cache-Status:
+      - DYNAMIC
+      X-Robots-Tag:
+      - none
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a013f874e0cef46-LHR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"model":"claude-sonnet-4-5-20250929","id":"msg_01Ts3dSzvX8d6TX1Y75yqLdt","type":"message","role":"assistant","content":[{"type":"tool_use","id":"toolu_01GSTZ65czPTLNYSpWsdn3k4","name":"ActAsAgent__Tools__ReadFile","input":{"file_path":"/var/folders/38/gv19_k_12ng_m2fyg7k9ztqh0000gn/T/d20251117-7998-4m53b3/diary.txt20251117-7998-mzpzu7"}},{"type":"tool_use","id":"toolu_01FJB9DxqJVzGc3JK2iv8JUW","name":"ActAsAgent__Tools__ReadFile","input":{"file_path":"/var/folders/38/gv19_k_12ng_m2fyg7k9ztqh0000gn/T/d20251117-7998-4m53b3/nested_folder/file_nested.txt20251117-7998-i0zag7"}}],"stop_reason":"tool_use","stop_sequence":null,"usage":{"input_tokens":863,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"cache_creation":{"ephemeral_5m_input_tokens":0,"ephemeral_1h_input_tokens":0},"output_tokens":233,"service_tier":"standard"}}'
+  recorded_at: Mon, 17 Nov 2025 18:21:33 GMT
+- request:
+    method: post
+    uri: https://api.anthropic.com/v1/messages
+    body:
+      encoding: UTF-8
+      string: '{"model":"claude-sonnet-4-5","messages":[{"role":"user","content":"Please
+        read my files (it''s my diary) and give me an advice"},{"role":"assistant","content":[{"type":"tool_use","id":"toolu_015e4ncCP5jjXUr7pyH4HFSm","name":"ActAsAgent__Tools__ListFiles","input":{}}]},{"role":"user","content":[{"type":"tool_result","tool_use_id":"toolu_015e4ncCP5jjXUr7pyH4HFSm","content":"[\"/var/folders/38/gv19_k_12ng_m2fyg7k9ztqh0000gn/T/d20251117-7998-4m53b3/diary.txt20251117-7998-mzpzu7\",
+        \"/var/folders/38/gv19_k_12ng_m2fyg7k9ztqh0000gn/T/d20251117-7998-4m53b3/nested_folder/file_nested.txt20251117-7998-i0zag7\"]"}]},{"role":"assistant","content":[{"type":"tool_use","id":"toolu_01GSTZ65czPTLNYSpWsdn3k4","name":"ActAsAgent__Tools__ReadFile","input":{"file_path":"/var/folders/38/gv19_k_12ng_m2fyg7k9ztqh0000gn/T/d20251117-7998-4m53b3/diary.txt20251117-7998-mzpzu7"}}]},{"role":"user","content":[{"type":"tool_result","tool_use_id":"toolu_01GSTZ65czPTLNYSpWsdn3k4","content":"I
+        feel really good, but not sure about future."}]},{"role":"assistant","content":[{"type":"tool_use","id":"toolu_01FJB9DxqJVzGc3JK2iv8JUW","name":"ActAsAgent__Tools__ReadFile","input":{"file_path":"/var/folders/38/gv19_k_12ng_m2fyg7k9ztqh0000gn/T/d20251117-7998-4m53b3/nested_folder/file_nested.txt20251117-7998-i0zag7"}}]},{"role":"user","content":[{"type":"tool_result","tool_use_id":"toolu_01FJB9DxqJVzGc3JK2iv8JUW","content":""}]}],"max_tokens":1024,"stream":false,"temperature":1.0,"tools":[{"name":"ActAsAgent__Tools__ListFiles","description":"List
+        files in the directory and all subdirectories. Pass the path to lookup","input_schema":{"type":"object","properties":{"root_folder":{"type":"string","description":"The
+        root folder of the list folder. By default it will use current folder."}},"required":[]}},{"name":"ActAsAgent__Tools__ReadFile","description":"Read
+        file by the given path","input_schema":{"type":"object","properties":{"file_path":{"type":"string","description":"File
+        path to read"}},"required":[]}}]}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.anthropic.com
+      Content-Type:
+      - application/json
+      X-Api-Key: ''
+      Anthropic-Version:
+      - '2023-06-01'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 17 Nov 2025 18:21:44 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Anthropic-Ratelimit-Input-Tokens-Limit:
+      - '30000'
+      Anthropic-Ratelimit-Input-Tokens-Remaining:
+      - '29000'
+      Anthropic-Ratelimit-Input-Tokens-Reset:
+      - '2025-11-17T18:21:37Z'
+      Anthropic-Ratelimit-Output-Tokens-Limit:
+      - '8000'
+      Anthropic-Ratelimit-Output-Tokens-Remaining:
+      - '8000'
+      Anthropic-Ratelimit-Output-Tokens-Reset:
+      - '2025-11-17T18:21:46Z'
+      Anthropic-Ratelimit-Requests-Limit:
+      - '50'
+      Anthropic-Ratelimit-Requests-Remaining:
+      - '49'
+      Anthropic-Ratelimit-Requests-Reset:
+      - '2025-11-17T18:21:35Z'
+      Retry-After:
+      - '24'
+      Anthropic-Ratelimit-Tokens-Limit:
+      - '38000'
+      Anthropic-Ratelimit-Tokens-Remaining:
+      - '37000'
+      Anthropic-Ratelimit-Tokens-Reset:
+      - '2025-11-17T18:21:37Z'
+      Request-Id:
+      - req_011CVDvf1kqnqAmVkBfDxEz1
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Anthropic-Organization-Id:
+      - 8b653cd9-c45c-4336-9846-71fadad55730
+      X-Envoy-Upstream-Service-Time:
+      - '10346'
+      Cf-Cache-Status:
+      - DYNAMIC
+      X-Robots-Tag:
+      - none
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a013f9f1f1f417c-LHR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"model":"claude-sonnet-4-5-20250929","id":"msg_01BD1z6rZcZQiG1bXvzBtLgx","type":"message","role":"assistant","content":[{"type":"text","text":"I''ve
+        read your diary entry. You wrote: \"I feel really good, but not sure about
+        future.\"\n\nHere''s my advice:\n\n**It''s completely normal to feel uncertain
+        about the future, even when things are going well right now.** Here are some
+        thoughts:\n\n1. **Embrace the present**: You''re feeling good now - that''s
+        wonderful! Try to appreciate and savor these positive moments. They''re valuable
+        in themselves.\n\n2. **Uncertainty is universal**: Nobody has complete certainty
+        about the future. The fact that you''re aware of this uncertainty shows self-awareness,
+        which is a strength.\n\n3. **Focus on what you can control**: While you can''t
+        predict or control everything, you can:\n   - Build healthy habits\n   - Nurture
+        relationships\n   - Develop skills\n   - Save resources (financial, emotional,
+        social)\n   - Make thoughtful decisions aligned with your values\n\n4. **Reframe
+        uncertainty**: Instead of viewing it as anxiety-inducing, try seeing it as
+        possibility. The unknown future could hold wonderful opportunities you haven''t
+        imagined yet.\n\n5. **Consider journaling more**: Since you''ve started a
+        diary, keep at it! Writing regularly about your thoughts and feelings can
+        help you process uncertainty and track your growth over time.\n\n**Bottom
+        line**: Enjoy feeling good now, and remember that preparing for the future
+        doesn''t mean you need to have it all figured out. Taking small, consistent
+        steps toward your goals while staying flexible is often the best approach.\n\nIs
+        there any specific aspect of the future you''re concerned about that you''d
+        like to talk through?"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":1161,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"cache_creation":{"ephemeral_5m_input_tokens":0,"ephemeral_1h_input_tokens":0},"output_tokens":342,"service_tier":"standard"}}'
+  recorded_at: Mon, 17 Nov 2025 18:21:44 GMT
+recorded_with: VCR 6.3.1

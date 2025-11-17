@@ -33,7 +33,7 @@ module ActAsAgent
       end
 
       def call(args = {})
-        path = args.fetch(:file_path, nil)
+        path = args.fetch("file_path", nil)
 
         return File.read(path) unless path.nil? || path.chomp == ""
         return File.read(file_path) unless file_path.nil?
