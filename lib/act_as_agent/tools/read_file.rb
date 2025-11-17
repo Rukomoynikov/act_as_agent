@@ -4,13 +4,13 @@ require "act_as_agent/errors/tool_incorrect_args_error"
 
 module ActAsAgent
   module Tools
-    class ListFiles
+    class ReadFile
       ERROR = ActAsAgent::Errors::ToolIncorrectArgsError
 
-      attr_reader :root_folder
+      attr_reader :file_path
 
-      def initialize(root_folder: nil)
-        @root_folder = root_folder
+      def initialize(file_path: nil)
+        @file_path = file_path
       end
 
       def name
@@ -18,25 +18,25 @@ module ActAsAgent
       end
 
       def description
-        "List files in the directory and all subdirectories. Pass the path to lookup"
+        "Read file by the given path"
       end
 
       def input_schema
         {
           type: "object",
           properties: {
-            root_folder: { type: "string",
-                           description: "The root folder of the list folder. By default it will use current folder." }
+            file_path: { type: "string",
+                         description: "File path to read" }
           },
           required: []
         }
       end
 
       def call(args = {})
-        path = args.fetch("path", nil)
+        path = args.fetch("file_path", nil)
 
-        return Dir.glob(path) unless path.nil? || path.chomp == ""
-        return Dir.glob(root_folder) unless root_folder.nil?
+        return File.read(path) unless path.nil? || path.chomp == ""
+        return File.read(file_path) unless file_path.nil?
 
         ERROR.new("Incorrect params have been given to list files tool")
       end

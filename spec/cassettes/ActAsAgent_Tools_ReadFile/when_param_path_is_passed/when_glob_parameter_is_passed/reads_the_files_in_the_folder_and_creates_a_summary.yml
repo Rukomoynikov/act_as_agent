@@ -1,0 +1,259 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.anthropic.com/v1/messages
+    body:
+      encoding: UTF-8
+      string: '{"model":"claude-sonnet-4-5","messages":[{"role":"user","content":"Please
+        read my files (it''s my diary) and give me an advice"}],"max_tokens":1024,"stream":false,"temperature":1.0,"tools":[{"name":"ActAsAgent__Tools__ListFiles","description":"List
+        files in the directory and all subdirectories. Pass the path to lookup","input_schema":{"type":"object","properties":{"root_folder":{"type":"string","description":"The
+        root folder of the list folder. By default it will use current folder."}},"required":[]}},{"name":"ActAsAgent__Tools__ReadFile","description":"Read
+        file by the given path","input_schema":{"type":"object","properties":{"file_path":{"type":"string","description":"File
+        path to read"}},"required":[]}}]}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.anthropic.com
+      Content-Type:
+      - application/json
+      X-Api-Key: ''
+      Anthropic-Version:
+      - '2023-06-01'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 17 Nov 2025 19:09:11 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Anthropic-Ratelimit-Input-Tokens-Limit:
+      - '30000'
+      Anthropic-Ratelimit-Input-Tokens-Remaining:
+      - '30000'
+      Anthropic-Ratelimit-Input-Tokens-Reset:
+      - '2025-11-17T19:09:10Z'
+      Anthropic-Ratelimit-Output-Tokens-Limit:
+      - '8000'
+      Anthropic-Ratelimit-Output-Tokens-Remaining:
+      - '8000'
+      Anthropic-Ratelimit-Output-Tokens-Reset:
+      - '2025-11-17T19:09:11Z'
+      Anthropic-Ratelimit-Requests-Limit:
+      - '50'
+      Anthropic-Ratelimit-Requests-Remaining:
+      - '49'
+      Anthropic-Ratelimit-Requests-Reset:
+      - '2025-11-17T19:09:09Z'
+      Retry-After:
+      - '51'
+      Anthropic-Ratelimit-Tokens-Limit:
+      - '38000'
+      Anthropic-Ratelimit-Tokens-Remaining:
+      - '38000'
+      Anthropic-Ratelimit-Tokens-Reset:
+      - '2025-11-17T19:09:10Z'
+      Request-Id:
+      - req_011CVDzHQ1tzHV46XJtTLNJR
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Anthropic-Organization-Id:
+      - 8b653cd9-c45c-4336-9846-71fadad55730
+      X-Envoy-Upstream-Service-Time:
+      - '3160'
+      Cf-Cache-Status:
+      - DYNAMIC
+      X-Robots-Tag:
+      - none
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a01854c099a7876-LHR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"model":"claude-sonnet-4-5-20250929","id":"msg_01BBvuc6f2CfJXFV4sHsvE55","type":"message","role":"assistant","content":[{"type":"text","text":"I''ll
+        help you read your diary files and provide some advice. Let me first see what
+        files you have."},{"type":"tool_use","id":"toolu_01KuFHw925tMDyUbWZ8HC376","name":"ActAsAgent__Tools__ListFiles","input":{}}],"stop_reason":"tool_use","stop_sequence":null,"usage":{"input_tokens":675,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"cache_creation":{"ephemeral_5m_input_tokens":0,"ephemeral_1h_input_tokens":0},"output_tokens":64,"service_tier":"standard"}}'
+  recorded_at: Mon, 17 Nov 2025 19:09:11 GMT
+- request:
+    method: post
+    uri: https://api.anthropic.com/v1/messages
+    body:
+      encoding: UTF-8
+      string: '{"model":"claude-sonnet-4-5","messages":[{"role":"user","content":"Please
+        read my files (it''s my diary) and give me an advice"},{"role":"assistant","content":[{"type":"tool_use","id":"toolu_01KuFHw925tMDyUbWZ8HC376","name":"ActAsAgent__Tools__ListFiles","input":{}}]},{"role":"user","content":[{"type":"tool_result","tool_use_id":"toolu_01KuFHw925tMDyUbWZ8HC376","content":"[\"act_as_agent/spec/system/tools/../../files_for_agents/diary.txt\"]"}]}],"max_tokens":1024,"stream":false,"temperature":1.0,"tools":[{"name":"ActAsAgent__Tools__ListFiles","description":"List
+        files in the directory and all subdirectories. Pass the path to lookup","input_schema":{"type":"object","properties":{"root_folder":{"type":"string","description":"The
+        root folder of the list folder. By default it will use current folder."}},"required":[]}},{"name":"ActAsAgent__Tools__ReadFile","description":"Read
+        file by the given path","input_schema":{"type":"object","properties":{"file_path":{"type":"string","description":"File
+        path to read"}},"required":[]}}]}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.anthropic.com
+      Content-Type:
+      - application/json
+      X-Api-Key: ''
+      Anthropic-Version:
+      - '2023-06-01'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 17 Nov 2025 19:09:19 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Anthropic-Ratelimit-Input-Tokens-Limit:
+      - '30000'
+      Anthropic-Ratelimit-Input-Tokens-Remaining:
+      - '30000'
+      Anthropic-Ratelimit-Input-Tokens-Reset:
+      - '2025-11-17T19:09:19Z'
+      Anthropic-Ratelimit-Output-Tokens-Limit:
+      - '8000'
+      Anthropic-Ratelimit-Output-Tokens-Remaining:
+      - '8000'
+      Anthropic-Ratelimit-Output-Tokens-Reset:
+      - '2025-11-17T19:09:20Z'
+      Anthropic-Ratelimit-Requests-Limit:
+      - '50'
+      Anthropic-Ratelimit-Requests-Remaining:
+      - '49'
+      Anthropic-Ratelimit-Requests-Reset:
+      - '2025-11-17T19:09:12Z'
+      Retry-After:
+      - '44'
+      Anthropic-Ratelimit-Tokens-Limit:
+      - '38000'
+      Anthropic-Ratelimit-Tokens-Remaining:
+      - '38000'
+      Anthropic-Ratelimit-Tokens-Reset:
+      - '2025-11-17T19:09:19Z'
+      Request-Id:
+      - req_011CVDzHeBSJrYiwand88QuD
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Anthropic-Organization-Id:
+      - 8b653cd9-c45c-4336-9846-71fadad55730
+      X-Envoy-Upstream-Service-Time:
+      - '8307'
+      Cf-Cache-Status:
+      - DYNAMIC
+      X-Robots-Tag:
+      - none
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a018561885c93fc-LHR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"model":"claude-sonnet-4-5-20250929","id":"msg_01Rb8fwW7W56a4b4Hkkwopzr","type":"message","role":"assistant","content":[{"type":"tool_use","id":"toolu_01TRXSMVoM35trS9gDyqncJj","name":"ActAsAgent__Tools__ReadFile","input":{"file_path":"act_as_agent/spec/system/tools/../../files_for_agents/diary.txt"}}],"stop_reason":"tool_use","stop_sequence":null,"usage":{"input_tokens":764,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"cache_creation":{"ephemeral_5m_input_tokens":0,"ephemeral_1h_input_tokens":0},"output_tokens":93,"service_tier":"standard"}}'
+  recorded_at: Mon, 17 Nov 2025 19:09:19 GMT
+- request:
+    method: post
+    uri: https://api.anthropic.com/v1/messages
+    body:
+      encoding: UTF-8
+      string: '{"model":"claude-sonnet-4-5","messages":[{"role":"user","content":"Please
+        read my files (it''s my diary) and give me an advice"},{"role":"assistant","content":[{"type":"tool_use","id":"toolu_01KuFHw925tMDyUbWZ8HC376","name":"ActAsAgent__Tools__ListFiles","input":{}}]},{"role":"user","content":[{"type":"tool_result","tool_use_id":"toolu_01KuFHw925tMDyUbWZ8HC376","content":"[\"act_as_agent/spec/system/tools/../../files_for_agents/diary.txt\"]"}]},{"role":"assistant","content":[{"type":"tool_use","id":"toolu_01TRXSMVoM35trS9gDyqncJj","name":"ActAsAgent__Tools__ReadFile","input":{"file_path":"act_as_agent/spec/system/tools/../../files_for_agents/diary.txt"}}]},{"role":"user","content":[{"type":"tool_result","tool_use_id":"toolu_01TRXSMVoM35trS9gDyqncJj","content":"I
+        feel really good, but not sure about future."}]}],"max_tokens":1024,"stream":false,"temperature":1.0,"tools":[{"name":"ActAsAgent__Tools__ListFiles","description":"List
+        files in the directory and all subdirectories. Pass the path to lookup","input_schema":{"type":"object","properties":{"root_folder":{"type":"string","description":"The
+        root folder of the list folder. By default it will use current folder."}},"required":[]}},{"name":"ActAsAgent__Tools__ReadFile","description":"Read
+        file by the given path","input_schema":{"type":"object","properties":{"file_path":{"type":"string","description":"File
+        path to read"}},"required":[]}}]}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.anthropic.com
+      Content-Type:
+      - application/json
+      X-Api-Key: ''
+      Anthropic-Version:
+      - '2023-06-01'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 17 Nov 2025 19:09:29 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Anthropic-Ratelimit-Input-Tokens-Limit:
+      - '30000'
+      Anthropic-Ratelimit-Input-Tokens-Remaining:
+      - '30000'
+      Anthropic-Ratelimit-Input-Tokens-Reset:
+      - '2025-11-17T19:09:22Z'
+      Anthropic-Ratelimit-Output-Tokens-Limit:
+      - '8000'
+      Anthropic-Ratelimit-Output-Tokens-Remaining:
+      - '8000'
+      Anthropic-Ratelimit-Output-Tokens-Reset:
+      - '2025-11-17T19:09:32Z'
+      Anthropic-Ratelimit-Requests-Limit:
+      - '50'
+      Anthropic-Ratelimit-Requests-Remaining:
+      - '49'
+      Anthropic-Ratelimit-Requests-Reset:
+      - '2025-11-17T19:09:21Z'
+      Retry-After:
+      - '39'
+      Anthropic-Ratelimit-Tokens-Limit:
+      - '38000'
+      Anthropic-Ratelimit-Tokens-Remaining:
+      - '38000'
+      Anthropic-Ratelimit-Tokens-Reset:
+      - '2025-11-17T19:09:22Z'
+      Request-Id:
+      - req_011CVDzJGPHrzfmi29jrn8Wd
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Anthropic-Organization-Id:
+      - 8b653cd9-c45c-4336-9846-71fadad55730
+      X-Envoy-Upstream-Service-Time:
+      - '10102'
+      Cf-Cache-Status:
+      - DYNAMIC
+      X-Robots-Tag:
+      - none
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a0185968e613f12-LHR
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJtb2RlbCI6ImNsYXVkZS1zb25uZXQtNC01LTIwMjUwOTI5IiwiaWQiOiJtc2dfMDFYcURmZ1huclhUUnA1OEo0ZTRLZnRRIiwidHlwZSI6Im1lc3NhZ2UiLCJyb2xlIjoiYXNzaXN0YW50IiwiY29udGVudCI6W3sidHlwZSI6InRleHQiLCJ0ZXh0IjoiVGhhbmsgeW91IGZvciBzaGFyaW5nIHlvdXIgZGlhcnkgd2l0aCBtZS4gQmFzZWQgb24gd2hhdCB5b3UndmUgd3JpdHRlbiwgaGVyZSdzIG15IGFkdmljZTpcblxuKipJdCdzIGNvbXBsZXRlbHkgbm9ybWFsIHRvIGZlZWwgdW5jZXJ0YWludHkgYWJvdXQgdGhlIGZ1dHVyZSwgZXZlbiB3aGVuIHRoaW5ncyBhcmUgZ29pbmcgd2VsbCBpbiB0aGUgcHJlc2VudC4qKiBIZXJlJ3Mgd2hhdCBJIHN1Z2dlc3Q6XG5cbjEuICoqRW1icmFjZSB0aGUgcHJlc2VudCBtb21lbnQqKiAtIFlvdSdyZSBmZWVsaW5nIGdvb2QgcmlnaHQgbm93LCBhbmQgdGhhdCdzIHdvbmRlcmZ1bCEgRG9uJ3QgbGV0IHdvcnJ5IGFib3V0IHRoZSBmdXR1cmUgZGltaW5pc2ggeW91ciBjdXJyZW50IGhhcHBpbmVzcy4gUHJhY3RpY2UgZ3JhdGl0dWRlIGZvciB3aGF0J3Mgd29ya2luZyBpbiB5b3VyIGxpZmUgdG9kYXkuXG5cbjIuICoqVW5jZXJ0YWludHkgaXMgcGFydCBvZiBsaWZlKiogLSBObyBvbmUgY2FuIHByZWRpY3QgdGhlIGZ1dHVyZSB3aXRoIGNlcnRhaW50eSwgYW5kIHRoYXQncyBva2F5LiBJbnN0ZWFkIG9mIHRyeWluZyB0byBlbGltaW5hdGUgdW5jZXJ0YWludHksIHdvcmsgb24gYnVpbGRpbmcgeW91ciByZXNpbGllbmNlIGFuZCBhZGFwdGFiaWxpdHkgdG8gaGFuZGxlIHdoYXRldmVyIGNvbWVzLlxuXG4zLiAqKlRha2Ugc21hbGwsIGFjdGlvbmFibGUgc3RlcHMqKiAtIElmIHRoZXJlIGFyZSBzcGVjaWZpYyBjb25jZXJucyBhYm91dCB5b3VyIGZ1dHVyZSwgYnJlYWsgdGhlbSBkb3duIGludG8gc21hbGwgYWN0aW9ucyB5b3UgY2FuIHRha2UgdG9kYXkuIFRoaXMgZ2l2ZXMgeW91IGEgc2Vuc2Ugb2YgY29udHJvbCBhbmQgZGlyZWN0aW9uIHdpdGhvdXQgb3ZlcndoZWxtaW5nIHlvdXJzZWxmLlxuXG40LiAqKkJ1aWxkIGEgc3VwcG9ydCBzeXN0ZW0qKiAtIENvbm5lY3Qgd2l0aCBmcmllbmRzLCBmYW1pbHksIG9yIGEgdGhlcmFwaXN0IHdobyBjYW4gcHJvdmlkZSBwZXJzcGVjdGl2ZSBhbmQgc3VwcG9ydCB3aGVuIHVuY2VydGFpbnR5IGZlZWxzIGhlYXZ5LlxuXG41LiAqKkNvbnNpZGVyIGpvdXJuYWxpbmcgbW9yZSBkZWVwbHkqKiAtIFlvdXIgZGlhcnkgY291bGQgYmUgYSBncmVhdCB0b29sIHRvIGV4cGxvcmUgd2hhdCBzcGVjaWZpY2FsbHkgd29ycmllcyB5b3UgYWJvdXQgdGhlIGZ1dHVyZS4gU29tZXRpbWVzIGdldHRpbmcgc3BlY2lmaWMgaGVscHMgY2xhcmlmeSB3aGV0aGVyIHlvdXIgY29uY2VybnMgYXJlIGFjdGlvbmFibGUgb3IganVzdCBnZW5lcmFsIGFueGlldHkuXG5cblJlbWVtYmVyOiBmZWVsaW5nIGdvb2Qgbm93IHdoaWxlIGJlaW5nIHVuc3VyZSBhYm91dCB0b21vcnJvdyBzaG93cyBzZWxmLWF3YXJlbmVzcy4gVXNlIHRoYXQgcG9zaXRpdmUgZW5lcmd5IHlvdSBoYXZlIHRvZGF5IHRvIHByZXBhcmUgeW91cnNlbGYgZW1vdGlvbmFsbHkgYW5kIHByYWN0aWNhbGx5IGZvciB3aGF0ZXZlciBjb21lcyBuZXh0LiDwn4yfXG5cbldoYXQgc3BlY2lmaWMgYXNwZWN0cyBvZiB0aGUgZnV0dXJlIGNvbmNlcm4geW91IG1vc3Q/IFRoYXQgbWlnaHQgaGVscCB5b3UgZm9jdXMgeW91ciBlbmVyZ3kgcHJvZHVjdGl2ZWx5LiJ9XSwic3RvcF9yZWFzb24iOiJlbmRfdHVybiIsInN0b3Bfc2VxdWVuY2UiOm51bGwsInVzYWdlIjp7ImlucHV0X3Rva2VucyI6ODc5LCJjYWNoZV9jcmVhdGlvbl9pbnB1dF90b2tlbnMiOjAsImNhY2hlX3JlYWRfaW5wdXRfdG9rZW5zIjowLCJjYWNoZV9jcmVhdGlvbiI6eyJlcGhlbWVyYWxfNW1faW5wdXRfdG9rZW5zIjowLCJlcGhlbWVyYWxfMWhfaW5wdXRfdG9rZW5zIjowfSwib3V0cHV0X3Rva2VucyI6MzMzLCJzZXJ2aWNlX3RpZXIiOiJzdGFuZGFyZCJ9fQ==
+  recorded_at: Mon, 17 Nov 2025 19:09:29 GMT
+recorded_with: VCR 6.3.1

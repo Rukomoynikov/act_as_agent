@@ -18,9 +18,7 @@ RSpec.describe ActAsAgent::Tools::ListFiles, :vcr do
     let(:tmp_dir) { Dir.mktmpdir }
 
     before do
-      Tempfile.create("diary.txt", tmp_dir) do |file|
-        file.write("Here is my dairy")
-      end
+      Tempfile.new("diary.txt", tmp_dir)
     end
 
     before do
@@ -34,8 +32,10 @@ RSpec.describe ActAsAgent::Tools::ListFiles, :vcr do
 
       it "returns list of files" do
         agent = MyDairyAgent.new
-        agent.tools << ActAsAgent::Tools::ListFiles.new(root_folder: File.join(tmp_dir, "**/*.*"))
-        agent.run(task: "Please get me list of files (make it in markdown format).")
+        agent.tools << ActAsAgent::Tools::ListFiles.new(root_folder: looked_path)
+        result = agent.run(task: "Please get me list of files (make it in markdown format).")
+
+        expect(result["content"][0]["text"]).to match("# File List\n\n- `/var/folders/38/gv19_k_12ng_m2fyg7k9ztqh0000gn/T/d20251117-9853-23f6r/diary.txt20251117-9853-vjom33`\n- `/var/folders/38/gv19_k_12ng_m2fyg7k9ztqh0000gn/T/d20251117-9853-23f6r/nested_folder/file_nested.txt20251117-9853-fjohm`\n\n## Directory Structure\n\n```\n/var/folders/38/gv19_k_12ng_m2fyg7k9ztqh0000gn/T/d20251117-9853-23f6r/\n├── diary.txt20251117-9853-vjom33\n└── nested_folder/\n    └── file_nested.txt20251117-9853-fjohm\n```") # rubocop:disable Layout/LineLength
       end
     end
   end

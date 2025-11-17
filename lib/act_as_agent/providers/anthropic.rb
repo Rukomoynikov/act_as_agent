@@ -37,22 +37,22 @@ module ActAsAgent
           end
         end
 
-        tool_responses = []
+        return response if response["stop_reason"] == "end_turn"
 
-        response["content"].each do |message|
-          next unless message["type"] == "tool_use"
+        tool_responses = response["content"].each_with_object([]) do |message, memo|
+          next memo unless message["type"] == "tool_use"
 
           @tools.each do |tool|
             next unless tool.name == message["name"]
 
-            tool_responses << {
+            memo << {
               "role" => "assistant",
               "content" => [
                 message
               ]
             }
 
-            tool_responses << {
+            memo << {
               role: "user",
               content: [
                 {
@@ -66,8 +66,6 @@ module ActAsAgent
         end
 
         request(content: content + tool_responses) unless tool_responses.empty?
-
-        response["content"]
       end
       # rubocop:enable Metrics/MethodLength, Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
 
