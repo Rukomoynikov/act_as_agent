@@ -1,0 +1,435 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.anthropic.com/v1/messages
+    body:
+      encoding: UTF-8
+      string: '{"model":"claude-sonnet-4-5","messages":[{"role":"user","content":"Please
+        read my files (it''s my diary) and give me an advice. Then write it into a
+        file."}],"max_tokens":1024,"stream":false,"temperature":1.0,"tools":[{"name":"ActAsAgent__Tools__ListFiles","description":"List
+        files in the directory and all subdirectories. Pass the path to lookup","input_schema":{"type":"object","properties":{"root_folder":{"type":"string","description":"The
+        root folder of the list folder. By default it will use current folder."}},"required":[]}},{"name":"ActAsAgent__Tools__ReadFile","description":"Read
+        file by the given path","input_schema":{"type":"object","properties":{"file_path":{"type":"string","description":"File
+        path to read"}},"required":[]}},{"name":"ActAsAgent__Tools__WriteFile","description":"It
+        writes content into file. If file doesn''t exist it will create a new one.
+        It accepts two parameters file_path and file_content. But file_path is optional
+        as by default it will write into the file user want it to be saved","input_schema":{"type":"object","properties":{"file_path":{"type":"string","description":"File
+        path to write"},"file_content":{"type":"string","description":"File content"}},"required":["file_content"]}}]}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.anthropic.com
+      Content-Type:
+      - application/json
+      X-Api-Key: ''
+      Anthropic-Version:
+      - '2023-06-01'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 17 Nov 2025 22:02:50 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Anthropic-Ratelimit-Input-Tokens-Limit:
+      - '30000'
+      Anthropic-Ratelimit-Input-Tokens-Remaining:
+      - '30000'
+      Anthropic-Ratelimit-Input-Tokens-Reset:
+      - '2025-11-17T22:02:50Z'
+      Anthropic-Ratelimit-Output-Tokens-Limit:
+      - '8000'
+      Anthropic-Ratelimit-Output-Tokens-Remaining:
+      - '8000'
+      Anthropic-Ratelimit-Output-Tokens-Reset:
+      - '2025-11-17T22:02:51Z'
+      Anthropic-Ratelimit-Requests-Limit:
+      - '50'
+      Anthropic-Ratelimit-Requests-Remaining:
+      - '49'
+      Anthropic-Ratelimit-Requests-Reset:
+      - '2025-11-17T22:02:49Z'
+      Retry-After:
+      - '11'
+      Anthropic-Ratelimit-Tokens-Limit:
+      - '38000'
+      Anthropic-Ratelimit-Tokens-Remaining:
+      - '38000'
+      Anthropic-Ratelimit-Tokens-Reset:
+      - '2025-11-17T22:02:50Z'
+      Request-Id:
+      - req_011CVEDXWu3JBBs9QAJohUwE
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Anthropic-Organization-Id:
+      - 8b653cd9-c45c-4336-9846-71fadad55730
+      X-Envoy-Upstream-Service-Time:
+      - '2324'
+      Cf-Cache-Status:
+      - DYNAMIC
+      X-Robots-Tag:
+      - none
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a0283b33e0bed08-LHR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"model":"claude-sonnet-4-5-20250929","id":"msg_015RMoRb7Za4CqJCRLWpdJxa","type":"message","role":"assistant","content":[{"type":"text","text":"I''ll
+        help you read your diary files and provide some advice. Let me first see what
+        files you have."},{"type":"tool_use","id":"toolu_011sssuHLLnzmEgPdHDSsM6F","name":"ActAsAgent__Tools__ListFiles","input":{}}],"stop_reason":"tool_use","stop_sequence":null,"usage":{"input_tokens":819,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"cache_creation":{"ephemeral_5m_input_tokens":0,"ephemeral_1h_input_tokens":0},"output_tokens":64,"service_tier":"standard"}}'
+  recorded_at: Mon, 17 Nov 2025 22:02:50 GMT
+- request:
+    method: post
+    uri: https://api.anthropic.com/v1/messages
+    body:
+      encoding: UTF-8
+      string: '{"model":"claude-sonnet-4-5","messages":[{"role":"user","content":"Please
+        read my files (it''s my diary) and give me an advice. Then write it into a
+        file."},{"role":"assistant","content":[{"type":"tool_use","id":"toolu_011sssuHLLnzmEgPdHDSsM6F","name":"ActAsAgent__Tools__ListFiles","input":{}}]},{"role":"user","content":[{"type":"tool_result","tool_use_id":"toolu_011sssuHLLnzmEgPdHDSsM6F","content":"[\"/Users/maksimrukomoynikov/Projects/act_as_agent/spec/system/tools/../../files_for_agents/diary.txt\"]"}]}],"max_tokens":1024,"stream":false,"temperature":1.0,"tools":[{"name":"ActAsAgent__Tools__ListFiles","description":"List
+        files in the directory and all subdirectories. Pass the path to lookup","input_schema":{"type":"object","properties":{"root_folder":{"type":"string","description":"The
+        root folder of the list folder. By default it will use current folder."}},"required":[]}},{"name":"ActAsAgent__Tools__ReadFile","description":"Read
+        file by the given path","input_schema":{"type":"object","properties":{"file_path":{"type":"string","description":"File
+        path to read"}},"required":[]}},{"name":"ActAsAgent__Tools__WriteFile","description":"It
+        writes content into file. If file doesn''t exist it will create a new one.
+        It accepts two parameters file_path and file_content. But file_path is optional
+        as by default it will write into the file user want it to be saved","input_schema":{"type":"object","properties":{"file_path":{"type":"string","description":"File
+        path to write"},"file_content":{"type":"string","description":"File content"}},"required":["file_content"]}}]}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.anthropic.com
+      Content-Type:
+      - application/json
+      X-Api-Key: ''
+      Anthropic-Version:
+      - '2023-06-01'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 17 Nov 2025 22:02:53 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Anthropic-Ratelimit-Input-Tokens-Limit:
+      - '30000'
+      Anthropic-Ratelimit-Input-Tokens-Remaining:
+      - '30000'
+      Anthropic-Ratelimit-Input-Tokens-Reset:
+      - '2025-11-17T22:02:53Z'
+      Anthropic-Ratelimit-Output-Tokens-Limit:
+      - '8000'
+      Anthropic-Ratelimit-Output-Tokens-Remaining:
+      - '8000'
+      Anthropic-Ratelimit-Output-Tokens-Reset:
+      - '2025-11-17T22:02:53Z'
+      Anthropic-Ratelimit-Requests-Limit:
+      - '50'
+      Anthropic-Ratelimit-Requests-Remaining:
+      - '49'
+      Anthropic-Ratelimit-Requests-Reset:
+      - '2025-11-17T22:02:52Z'
+      Retry-After:
+      - '8'
+      Anthropic-Ratelimit-Tokens-Limit:
+      - '38000'
+      Anthropic-Ratelimit-Tokens-Remaining:
+      - '38000'
+      Anthropic-Ratelimit-Tokens-Reset:
+      - '2025-11-17T22:02:53Z'
+      Request-Id:
+      - req_011CVEDXi1muSewVitAjvH1C
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Anthropic-Organization-Id:
+      - 8b653cd9-c45c-4336-9846-71fadad55730
+      X-Envoy-Upstream-Service-Time:
+      - '2316'
+      Cf-Cache-Status:
+      - DYNAMIC
+      X-Robots-Tag:
+      - none
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a0283c368243161-LHR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"model":"claude-sonnet-4-5-20250929","id":"msg_01RruoxgJE7k5qha8GWtgiti","type":"message","role":"assistant","content":[{"type":"tool_use","id":"toolu_011J3aB4eW39C7rnCYZdZo9N","name":"ActAsAgent__Tools__ReadFile","input":{"file_path":"/Users/maksimrukomoynikov/Projects/act_as_agent/spec/system/tools/../../files_for_agents/diary.txt"}}],"stop_reason":"tool_use","stop_sequence":null,"usage":{"input_tokens":908,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"cache_creation":{"ephemeral_5m_input_tokens":0,"ephemeral_1h_input_tokens":0},"output_tokens":93,"service_tier":"standard"}}'
+  recorded_at: Mon, 17 Nov 2025 22:02:53 GMT
+- request:
+    method: post
+    uri: https://api.anthropic.com/v1/messages
+    body:
+      encoding: UTF-8
+      string: '{"model":"claude-sonnet-4-5","messages":[{"role":"user","content":"Please
+        read my files (it''s my diary) and give me an advice. Then write it into a
+        file."},{"role":"assistant","content":[{"type":"tool_use","id":"toolu_011sssuHLLnzmEgPdHDSsM6F","name":"ActAsAgent__Tools__ListFiles","input":{}}]},{"role":"user","content":[{"type":"tool_result","tool_use_id":"toolu_011sssuHLLnzmEgPdHDSsM6F","content":"[\"/Users/maksimrukomoynikov/Projects/act_as_agent/spec/system/tools/../../files_for_agents/diary.txt\"]"}]},{"role":"assistant","content":[{"type":"tool_use","id":"toolu_011J3aB4eW39C7rnCYZdZo9N","name":"ActAsAgent__Tools__ReadFile","input":{"file_path":"/Users/maksimrukomoynikov/Projects/act_as_agent/spec/system/tools/../../files_for_agents/diary.txt"}}]},{"role":"user","content":[{"type":"tool_result","tool_use_id":"toolu_011J3aB4eW39C7rnCYZdZo9N","content":"I
+        feel really good, but not sure about future."}]}],"max_tokens":1024,"stream":false,"temperature":1.0,"tools":[{"name":"ActAsAgent__Tools__ListFiles","description":"List
+        files in the directory and all subdirectories. Pass the path to lookup","input_schema":{"type":"object","properties":{"root_folder":{"type":"string","description":"The
+        root folder of the list folder. By default it will use current folder."}},"required":[]}},{"name":"ActAsAgent__Tools__ReadFile","description":"Read
+        file by the given path","input_schema":{"type":"object","properties":{"file_path":{"type":"string","description":"File
+        path to read"}},"required":[]}},{"name":"ActAsAgent__Tools__WriteFile","description":"It
+        writes content into file. If file doesn''t exist it will create a new one.
+        It accepts two parameters file_path and file_content. But file_path is optional
+        as by default it will write into the file user want it to be saved","input_schema":{"type":"object","properties":{"file_path":{"type":"string","description":"File
+        path to write"},"file_content":{"type":"string","description":"File content"}},"required":["file_content"]}}]}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.anthropic.com
+      Content-Type:
+      - application/json
+      X-Api-Key: ''
+      Anthropic-Version:
+      - '2023-06-01'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 17 Nov 2025 22:03:06 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Anthropic-Ratelimit-Input-Tokens-Limit:
+      - '30000'
+      Anthropic-Ratelimit-Input-Tokens-Remaining:
+      - '30000'
+      Anthropic-Ratelimit-Input-Tokens-Reset:
+      - '2025-11-17T22:02:56Z'
+      Anthropic-Ratelimit-Output-Tokens-Limit:
+      - '8000'
+      Anthropic-Ratelimit-Output-Tokens-Remaining:
+      - '7000'
+      Anthropic-Ratelimit-Output-Tokens-Reset:
+      - '2025-11-17T22:03:11Z'
+      Anthropic-Ratelimit-Requests-Limit:
+      - '50'
+      Anthropic-Ratelimit-Requests-Remaining:
+      - '49'
+      Anthropic-Ratelimit-Requests-Reset:
+      - '2025-11-17T22:02:54Z'
+      Retry-After:
+      - '5'
+      Anthropic-Ratelimit-Tokens-Limit:
+      - '38000'
+      Anthropic-Ratelimit-Tokens-Remaining:
+      - '37000'
+      Anthropic-Ratelimit-Tokens-Reset:
+      - '2025-11-17T22:02:56Z'
+      Request-Id:
+      - req_011CVEDXtw72E6NtLdRMAW14
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Anthropic-Organization-Id:
+      - 8b653cd9-c45c-4336-9846-71fadad55730
+      X-Envoy-Upstream-Service-Time:
+      - '13096'
+      Cf-Cache-Status:
+      - DYNAMIC
+      X-Robots-Tag:
+      - none
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a0283d36d0f2565-LHR
+    body:
+      encoding: ASCII-8BIT
+      string: '{"model":"claude-sonnet-4-5-20250929","id":"msg_0143LwcHfenCX7pesMgHqC4K","type":"message","role":"assistant","content":[{"type":"text","text":"Thank
+        you for sharing your diary with me. Based on what you wrote, here''s my advice:\n\n**Advice:**\n\nIt''s
+        wonderful that you''re feeling good in the present moment! That''s something
+        to celebrate and be grateful for. The uncertainty about the future is completely
+        normal - we all experience it. Here are some thoughts:\n\n1. **Embrace the
+        present**: Since you''re feeling good now, try to fully appreciate and be
+        present in this moment. Our present experiences build the foundation for our
+        future.\n\n2. **Uncertainty is natural**: No one can be completely sure about
+        the future, and that''s okay. Accepting uncertainty as part of life can actually
+        reduce anxiety about it.\n\n3. **Focus on what you can control**: While you
+        can''t predict or control everything about the future, you can take small,
+        positive actions today that align with your values and goals.\n\n4. **Trust
+        in your resilience**: You''ve made it through challenges before, and the fact
+        that you feel good now shows you have the capacity to navigate whatever comes.\n\n5.
+        **Balance planning with flexibility**: It''s good to have goals and plans,
+        but stay open to adjusting them as life unfolds.\n\nRemember: Feeling good
+        now is a strength to build from, not something diminished by future uncertainty.\n\nLet
+        me write this advice to a file for you:"},{"type":"tool_use","id":"toolu_012j8icjVykh3FGZNoXgoQhW","name":"ActAsAgent__Tools__WriteFile","input":{"file_path":"/Users/maksimrukomoynikov/Projects/act_as_agent/spec/system/tools/../../files_for_agents/advice.txt","file_content":"Advice
+        Based on Your Diary Entry\n================================\n\nYour Entry:
+        \"I feel really good, but not sure about future.\"\n\nMy Advice:\n----------\n\nIt''s
+        wonderful that you''re feeling good in the present moment! That''s something
+        to celebrate and be grateful for. The uncertainty about the future is completely
+        normal - we all experience it.\n\n1. Embrace the present: Since you''re feeling
+        good now, try to fully appreciate and be present in this moment. Our present
+        experiences build the foundation for our future.\n\n2. Uncertainty is natural:
+        No one can be completely sure about the future, and that''s okay. Accepting
+        uncertainty as part of life can actually reduce anxiety about it.\n\n3. Focus
+        on what you can control: While you can''t predict or control everything about
+        the future, you can take small, positive actions today that align with your
+        values and goals.\n\n4. Trust in your resilience: You''ve made it through
+        challenges before, and the fact that you feel good now shows you have the
+        capacity to navigate whatever comes.\n\n5. Balance planning with flexibility:
+        It''s good to have goals and plans, but stay open to adjusting them as life
+        unfolds.\n\nRemember: Feeling good now is a strength to build from, not something
+        diminished by future uncertainty. Use your current positive state as energy
+        to take meaningful steps forward, one day at a time.\n"}}],"stop_reason":"tool_use","stop_sequence":null,"usage":{"input_tokens":1023,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"cache_creation":{"ephemeral_5m_input_tokens":0,"ephemeral_1h_input_tokens":0},"output_tokens":682,"service_tier":"standard"}}'
+  recorded_at: Mon, 17 Nov 2025 22:03:06 GMT
+- request:
+    method: post
+    uri: https://api.anthropic.com/v1/messages
+    body:
+      encoding: UTF-8
+      string: '{"model":"claude-sonnet-4-5","messages":[{"role":"user","content":"Please
+        read my files (it''s my diary) and give me an advice. Then write it into a
+        file."},{"role":"assistant","content":[{"type":"tool_use","id":"toolu_011sssuHLLnzmEgPdHDSsM6F","name":"ActAsAgent__Tools__ListFiles","input":{}}]},{"role":"user","content":[{"type":"tool_result","tool_use_id":"toolu_011sssuHLLnzmEgPdHDSsM6F","content":"[\"/Users/maksimrukomoynikov/Projects/act_as_agent/spec/system/tools/../../files_for_agents/diary.txt\"]"}]},{"role":"assistant","content":[{"type":"tool_use","id":"toolu_011J3aB4eW39C7rnCYZdZo9N","name":"ActAsAgent__Tools__ReadFile","input":{"file_path":"/Users/maksimrukomoynikov/Projects/act_as_agent/spec/system/tools/../../files_for_agents/diary.txt"}}]},{"role":"user","content":[{"type":"tool_result","tool_use_id":"toolu_011J3aB4eW39C7rnCYZdZo9N","content":"I
+        feel really good, but not sure about future."}]},{"role":"assistant","content":[{"type":"tool_use","id":"toolu_012j8icjVykh3FGZNoXgoQhW","name":"ActAsAgent__Tools__WriteFile","input":{"file_path":"/Users/maksimrukomoynikov/Projects/act_as_agent/spec/system/tools/../../files_for_agents/advice.txt","file_content":"Advice
+        Based on Your Diary Entry\n================================\n\nYour Entry:
+        \"I feel really good, but not sure about future.\"\n\nMy Advice:\n----------\n\nIt''s
+        wonderful that you''re feeling good in the present moment! That''s something
+        to celebrate and be grateful for. The uncertainty about the future is completely
+        normal - we all experience it.\n\n1. Embrace the present: Since you''re feeling
+        good now, try to fully appreciate and be present in this moment. Our present
+        experiences build the foundation for our future.\n\n2. Uncertainty is natural:
+        No one can be completely sure about the future, and that''s okay. Accepting
+        uncertainty as part of life can actually reduce anxiety about it.\n\n3. Focus
+        on what you can control: While you can''t predict or control everything about
+        the future, you can take small, positive actions today that align with your
+        values and goals.\n\n4. Trust in your resilience: You''ve made it through
+        challenges before, and the fact that you feel good now shows you have the
+        capacity to navigate whatever comes.\n\n5. Balance planning with flexibility:
+        It''s good to have goals and plans, but stay open to adjusting them as life
+        unfolds.\n\nRemember: Feeling good now is a strength to build from, not something
+        diminished by future uncertainty. Use your current positive state as energy
+        to take meaningful steps forward, one day at a time.\n"}}]},{"role":"user","content":[{"type":"tool_result","tool_use_id":"toolu_012j8icjVykh3FGZNoXgoQhW","content":"Advice
+        Based on Your Diary Entry\n================================\n\nYour Entry:
+        \"I feel really good, but not sure about future.\"\n\nMy Advice:\n----------\n\nIt''s
+        wonderful that you''re feeling good in the present moment! That''s something
+        to celebrate and be grateful for. The uncertainty about the future is completely
+        normal - we all experience it.\n\n1. Embrace the present: Since you''re feeling
+        good now, try to fully appreciate and be present in this moment. Our present
+        experiences build the foundation for our future.\n\n2. Uncertainty is natural:
+        No one can be completely sure about the future, and that''s okay. Accepting
+        uncertainty as part of life can actually reduce anxiety about it.\n\n3. Focus
+        on what you can control: While you can''t predict or control everything about
+        the future, you can take small, positive actions today that align with your
+        values and goals.\n\n4. Trust in your resilience: You''ve made it through
+        challenges before, and the fact that you feel good now shows you have the
+        capacity to navigate whatever comes.\n\n5. Balance planning with flexibility:
+        It''s good to have goals and plans, but stay open to adjusting them as life
+        unfolds.\n\nRemember: Feeling good now is a strength to build from, not something
+        diminished by future uncertainty. Use your current positive state as energy
+        to take meaningful steps forward, one day at a time.\n"}]}],"max_tokens":1024,"stream":false,"temperature":1.0,"tools":[{"name":"ActAsAgent__Tools__ListFiles","description":"List
+        files in the directory and all subdirectories. Pass the path to lookup","input_schema":{"type":"object","properties":{"root_folder":{"type":"string","description":"The
+        root folder of the list folder. By default it will use current folder."}},"required":[]}},{"name":"ActAsAgent__Tools__ReadFile","description":"Read
+        file by the given path","input_schema":{"type":"object","properties":{"file_path":{"type":"string","description":"File
+        path to read"}},"required":[]}},{"name":"ActAsAgent__Tools__WriteFile","description":"It
+        writes content into file. If file doesn''t exist it will create a new one.
+        It accepts two parameters file_path and file_content. But file_path is optional
+        as by default it will write into the file user want it to be saved","input_schema":{"type":"object","properties":{"file_path":{"type":"string","description":"File
+        path to write"},"file_content":{"type":"string","description":"File content"}},"required":["file_content"]}}]}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.anthropic.com
+      Content-Type:
+      - application/json
+      X-Api-Key: ''
+      Anthropic-Version:
+      - '2023-06-01'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 17 Nov 2025 22:03:12 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Anthropic-Ratelimit-Input-Tokens-Limit:
+      - '30000'
+      Anthropic-Ratelimit-Input-Tokens-Remaining:
+      - '29000'
+      Anthropic-Ratelimit-Input-Tokens-Reset:
+      - '2025-11-17T22:03:10Z'
+      Anthropic-Ratelimit-Output-Tokens-Limit:
+      - '8000'
+      Anthropic-Ratelimit-Output-Tokens-Remaining:
+      - '8000'
+      Anthropic-Ratelimit-Output-Tokens-Reset:
+      - '2025-11-17T22:03:14Z'
+      Anthropic-Ratelimit-Requests-Limit:
+      - '50'
+      Anthropic-Ratelimit-Requests-Remaining:
+      - '49'
+      Anthropic-Ratelimit-Requests-Reset:
+      - '2025-11-17T22:03:08Z'
+      Retry-After:
+      - '52'
+      Anthropic-Ratelimit-Tokens-Limit:
+      - '38000'
+      Anthropic-Ratelimit-Tokens-Remaining:
+      - '37000'
+      Anthropic-Ratelimit-Tokens-Reset:
+      - '2025-11-17T22:03:10Z'
+      Request-Id:
+      - req_011CVEDYsxM9FLNcoXQ7DDVd
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Anthropic-Organization-Id:
+      - 8b653cd9-c45c-4336-9846-71fadad55730
+      X-Envoy-Upstream-Service-Time:
+      - '6208'
+      Cf-Cache-Status:
+      - DYNAMIC
+      X-Robots-Tag:
+      - none
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9a028426ba347791-LHR
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJtb2RlbCI6ImNsYXVkZS1zb25uZXQtNC01LTIwMjUwOTI5IiwiaWQiOiJtc2dfMDEyMnpoYkZ4eFBoR2tRVkdzQUtCYWpkIiwidHlwZSI6Im1lc3NhZ2UiLCJyb2xlIjoiYXNzaXN0YW50IiwiY29udGVudCI6W3sidHlwZSI6InRleHQiLCJ0ZXh0IjoiSSd2ZSByZWFkIHlvdXIgZGlhcnkgYW5kIHdyaXR0ZW4gbXkgYWR2aWNlIHRvIGEgZmlsZSEgXG5cbioqU3VtbWFyeToqKlxuXG5Zb3VyIGRpYXJ5IGVudHJ5IHNob3dzIHRoYXQgeW91J3JlIGZlZWxpbmcgZ29vZCBpbiB0aGUgcHJlc2VudCwgYnV0IGV4cGVyaWVuY2luZyB1bmNlcnRhaW50eSBhYm91dCB0aGUgZnV0dXJlLiBUaGlzIGlzIGEgdmVyeSBjb21tb24gYW5kIG5hdHVyYWwgZmVlbGluZy5cblxuTXkgbWFpbiBhZHZpY2UgaXMgdG86XG4tIENlbGVicmF0ZSBhbmQgZW1icmFjZSB5b3VyIGN1cnJlbnQgcG9zaXRpdmUgc3RhdGVcbi0gQWNjZXB0IHRoYXQgdW5jZXJ0YWludHkgaXMgYSBub3JtYWwgcGFydCBvZiBsaWZlXG4tIEZvY3VzIG9uIHdoYXQgeW91IGNhbiBjb250cm9sIHRvZGF5XG4tIFRydXN0IGluIHlvdXIgcmVzaWxpZW5jZSBhbmQgYWJpbGl0eSB0byBoYW5kbGUgd2hhdCBjb21lc1xuLSBUYWtlIHNtYWxsLCBtZWFuaW5nZnVsIGFjdGlvbnMgYWxpZ25lZCB3aXRoIHlvdXIgdmFsdWVzXG5cbkkndmUgc2F2ZWQgdGhpcyBhZHZpY2UgdG8gKiphZHZpY2UudHh0KiogaW4geW91ciBmaWxlcyBkaXJlY3RvcnkuIFRoZSBmYWN0IHRoYXQgeW91J3JlIGZlZWxpbmcgZ29vZCBub3cgaXMgYSBncmVhdCBmb3VuZGF0aW9uIC0gdXNlIHRoYXQgcG9zaXRpdmUgZW5lcmd5IHRvIG1vdmUgZm9yd2FyZCwgb25lIHN0ZXAgYXQgYSB0aW1lLCByYXRoZXIgdGhhbiBsZXR0aW5nIGZ1dHVyZSB1bmNlcnRhaW50eSBkaW1pbmlzaCB5b3VyIHByZXNlbnQgam95LiDwn4yfIn1dLCJzdG9wX3JlYXNvbiI6ImVuZF90dXJuIiwic3RvcF9zZXF1ZW5jZSI6bnVsbCwidXNhZ2UiOnsiaW5wdXRfdG9rZW5zIjoxNzIyLCJjYWNoZV9jcmVhdGlvbl9pbnB1dF90b2tlbnMiOjAsImNhY2hlX3JlYWRfaW5wdXRfdG9rZW5zIjowLCJjYWNoZV9jcmVhdGlvbiI6eyJlcGhlbWVyYWxfNW1faW5wdXRfdG9rZW5zIjowLCJlcGhlbWVyYWxfMWhfaW5wdXRfdG9rZW5zIjowfSwib3V0cHV0X3Rva2VucyI6MTcxLCJzZXJ2aWNlX3RpZXIiOiJzdGFuZGFyZCJ9fQ==
+  recorded_at: Mon, 17 Nov 2025 22:03:13 GMT
+recorded_with: VCR 6.3.1

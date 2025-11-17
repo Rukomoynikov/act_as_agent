@@ -18,7 +18,7 @@ module ActAsAgent
       end
 
       def description
-        "Read file by the given path"
+        "It writes content into file. If file doesn't exist it will create a new one. It accepts two parameters file_path and file_content. But file_path is optional as by default it will write into the file user want it to be saved"
       end
 
       def input_schema
@@ -26,9 +26,10 @@ module ActAsAgent
           type: "object",
           properties: {
             file_path: { type: "string",
-                         description: "File path to read" }
+                         description: "File path to write" },
+            file_content: { type: "string", description: "File content" }
           },
-          required: []
+          required: ["file_content"]
         }
       end
 

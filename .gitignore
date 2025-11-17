@@ -12,3 +12,6 @@
 .idea
 vendor
 spec/credentials.yml
+
+# to ignore results of WriteFile tool
+spec/files_for_agents/advice.txt
