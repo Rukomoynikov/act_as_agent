@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |spec|
   spec.name = "act_as_agent"
-  spec.version = "0.2.0"
+  spec.version = "0.3.0"
   spec.authors = ["Max Rukomoynikov"]
   spec.email = ["rukomoynikov@gmail.com"]
 
