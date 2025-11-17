@@ -16,36 +16,25 @@ end
 
 RSpec.describe ActAsAgent::Tools::ReadFile, :vcr do
   context "when param path is passed" do
-    let(:file_content) do
-      "I feel really good, but not sure about future."
-    end
-    let(:tmp_dir) { Dir.mktmpdir }
-
-    before do
-      file = Tempfile.create("diary.txt", tmp_dir)
-      file.write(file_content)
-      file.rewind
-
-      file.path
-    end
-
-    before do
-      nested_dir_path = File.join(tmp_dir, "nested_folder")
-      Dir.mkdir(nested_dir_path)
-      Tempfile.create("file_nested.txt", nested_dir_path)
-    end
-
     describe "when glob parameter is passed" do
-      let(:looked_path) { File.join(tmp_dir, "**/*.*") }
+      let(:lookup_path) { File.join(__dir__, "../../files_for_agents/**/*.txt") }
+      let(:file_diary_path) { File.join(__dir__, "../../files_for_agents/diary.txt") }
 
-      it "returns list of files" do
+      before do
+        allow_any_instance_of(
+          ActAsAgent::Tools::ReadFile
+        ).to receive(:call)
+          .and_return("I feel really good, but not sure about future.")
+      end
+
+      it "reads the files in the folder and creates a summary" do
         agent = MyDairyAgent.new
-        agent.tools << ActAsAgent::Tools::ListFiles.new(root_folder: looked_path)
+        agent.tools << ActAsAgent::Tools::ListFiles.new(root_folder: lookup_path)
         agent.tools << ActAsAgent::Tools::ReadFile.new
 
         result = agent.run(task: "Please read my files (it's my diary) and give me an advice")
 
-        expect(result["content"][0]["text"]).to match("I've read your diary entry")
+        expect(result["content"][0]["text"]).to match("Thank you for sharing your diary with me")
       end
     end
   end

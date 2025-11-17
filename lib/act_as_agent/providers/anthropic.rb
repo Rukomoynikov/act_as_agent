@@ -4,7 +4,6 @@
 # https://docs.claude.com/en/docs/agents-and-tools/tool-use/overview#tool-use-examples
 require "act_as_agent/api_clients/anthropic_api_client"
 require "act_as_agent/errors/providers/anthropic/authentication_error"
-require "logger"
 
 module ActAsAgent
   module Providers
@@ -22,8 +21,6 @@ module ActAsAgent
 
       # rubocop:disable Metrics/MethodLength, Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
       def request(content:)
-        Logger.new($stdout)
-
         content = [{ role: "user", content: content }] unless content.is_a?(Array)
 
         response = client.create(
