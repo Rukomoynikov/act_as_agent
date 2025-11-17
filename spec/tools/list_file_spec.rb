@@ -23,7 +23,7 @@ RSpec.describe ActAsAgent::Tools::ListFiles do
 
       it "returns list of files" do
         expect(
-          subject.call(path: looked_path).length
+          subject.call({ "path" => looked_path }).length
         ).to eq(2)
       end
     end

@@ -33,7 +33,7 @@ module ActAsAgent
       end
 
       def call(args = {})
-        path = args.fetch(:path, nil)
+        path = args.fetch("path", nil)
 
         return Dir.glob(path) unless path.nil? || path.chomp == ""
         return Dir.glob(root_folder) unless root_folder.nil?

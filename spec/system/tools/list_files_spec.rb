@@ -35,26 +35,7 @@ RSpec.describe ActAsAgent::Tools::ListFiles, :vcr do
         agent.tools << ActAsAgent::Tools::ListFiles.new(root_folder: looked_path)
         result = agent.run(task: "Please get me list of files (make it in markdown format).")
 
-        expect(result).to eq({ "model" => "claude-sonnet-4-5-20250929",
-                               "id" => "msg_01SCyqg4YQrCv3LY4JFQaZcs",
-                               "type" => "message",
-                               "role" => "assistant",
-                               "content" => [
-                                 { "type" => "text",
-                                   "text" => "# File List\n\n## Root Directory\n- `diary.txt20251116-12369-yan3h6`\n\n## Subdirectory: nested_folder/\n- `file_nested.txt20251116-12369-dzwy00`\n\n---\n\n**Total Files:** 2" } # rubocop:disable Layout/LineLength
-                               ],
-                               "stop_reason" => "end_turn",
-                               "stop_sequence" => nil,
-                               "usage" => {
-                                 "input_tokens" => 790,
-                                 "cache_creation_input_tokens" => 0,
-                                 "cache_read_input_tokens" => 0,
-                                 "cache_creation" => {
-                                   "ephemeral_5m_input_tokens" => 0,
-                                   "ephemeral_1h_input_tokens" => 0
-                                 },
-                                 "output_tokens" => 67, "service_tier" => "standard"
-                               } })
+        expect(result["content"][0]["text"]).to match("# File List\n\n- `/var/folders/38/gv19_k_12ng_m2fyg7k9ztqh0000gn/T/d20251117-9853-23f6r/diary.txt20251117-9853-vjom33`\n- `/var/folders/38/gv19_k_12ng_m2fyg7k9ztqh0000gn/T/d20251117-9853-23f6r/nested_folder/file_nested.txt20251117-9853-fjohm`\n\n## Directory Structure\n\n```\n/var/folders/38/gv19_k_12ng_m2fyg7k9ztqh0000gn/T/d20251117-9853-23f6r/\n├── diary.txt20251117-9853-vjom33\n└── nested_folder/\n    └── file_nested.txt20251117-9853-fjohm\n```") # rubocop:disable Layout/LineLength
       end
     end
   end
