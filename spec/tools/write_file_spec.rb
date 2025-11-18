@@ -18,8 +18,30 @@ RSpec.describe ActAsAgent::Tools::WriteFile do
   it "creates a folder (and file) if they don't exist"
   it "updates the content of the file"
 
+  context "when parameter return_content" do
+    context "is true" do
+      let(:tool) { ActAsAgent::Tools::WriteFile.new(return_content: true, file_path: temp_file_path) }
+
+      it "returns content of the file" do
+        expect(
+          tool.call({ "file_content" => after_file_content })
+        ).to eq(after_file_content)
+      end
+    end
+
+    context "is false" do
+      let(:tool) { ActAsAgent::Tools::WriteFile.new(return_content: false, file_path: temp_file_path) }
+
+      it "doesn't return content of the file" do
+        expect(
+          tool.call({ "file_content" => after_file_content })
+        ).to eq(nil)
+      end
+    end
+  end
+
   context "when file_path is provided for initializer" do
-    let(:tool) { ActAsAgent::Tools::WriteFile.new(file_path: temp_file_path) }
+    let(:tool) { ActAsAgent::Tools::WriteFile.new(file_path: temp_file_path, return_content: true) }
 
     it "creates a folder (and file) if they don't exist" do
       expect(
@@ -29,7 +51,7 @@ RSpec.describe ActAsAgent::Tools::WriteFile do
   end
 
   context "when file_path is provided for #call method" do
-    let(:tool) { ActAsAgent::Tools::WriteFile.new }
+    let(:tool) { ActAsAgent::Tools::WriteFile.new(return_content: true) }
 
     it "creates a folder (and file) if they don't exist" do
       expect(
@@ -72,50 +94,5 @@ RSpec.describe ActAsAgent::Tools::WriteFile do
     end
 
     context "when file_path is provided for initializer"
-
-    # context "when file_path is not provided" do
-    #   let(:dir_expected) { File.expand_path(base_folder) }
-    #
-    #   before do
-    #     Dir.rmdir(dir_expected) if Dir.exists?(dir_expected)
-    #   end
-    #
-    #   after { Dir.rmdir(dir_expected) }
-    #
-    #   it "creates a folder (and file) inside this folder" do
-    #     expect {
-    #       tool.call()
-    #     }.to change {
-    #       Dir.exists?(File.expand_path(base_folder))
-    #     }
-    #   end
-    # end
   end
-
-  # describe "it supports base_folder" do
-  #   context "when file_path is absolute" do
-  #     it "creates file in this folder" do
-  #       tool = ActAsAgent::Tools::WriteFile.new(base_folder: "./result")
-  #
-  #       expect(
-  #         tool.call({
-  #                     "file_path" => temp_file_path,
-  #                     "file_content" => after_file_content
-  #                   })
-  #       ).to eq(after_file_content)
-  #     end
-  #   end
-  #
-  #   context "when file_path is relative" do
-  #     it "creates file in this folder" do
-  #       # expect_any_instance_of(File).to receive(:open)
-  #
-  #       tool = ActAsAgent::Tools::WriteFile.new(base_folder: "./result")
-  #       tool.call({
-  #                   "file_path" => temp_file_path,
-  #                   "file_content" => after_file_content
-  #                 })
-  #     end
-  #   end
-  # end
 end

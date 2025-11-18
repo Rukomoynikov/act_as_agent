@@ -8,11 +8,12 @@ module ActAsAgent
     class WriteFile
       ERROR = ActAsAgent::Errors::ToolIncorrectArgsError
 
-      attr_reader :file_path, :base_folder
+      attr_reader :file_path, :base_folder, :return_content
 
-      def initialize(file_path: nil, base_folder: nil)
+      def initialize(file_path: nil, base_folder: nil, return_content: false)
         @file_path = file_path
         @base_folder = base_folder
+        @return_content = return_content
       end
 
       def name
@@ -58,7 +59,8 @@ module ActAsAgent
         return if File.directory?(path)
 
         File.write(path, content)
-        File.read(path)
+
+        File.read(path) if return_content
       end
     end
   end
