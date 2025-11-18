@@ -4,6 +4,7 @@
 # https://docs.claude.com/en/docs/agents-and-tools/tool-use/overview#tool-use-examples
 require "act_as_agent/api_clients/anthropic_api_client"
 require "act_as_agent/errors/providers/anthropic/authentication_error"
+require "act_as_agent/errors/providers/anthropic/too_many_requests_error"
 
 module ActAsAgent
   module Providers
@@ -34,6 +35,8 @@ module ActAsAgent
           case response["error"]["type"]
           when "authentication_error"
             return ActAsAgent::Errors::Providers::AuthenticationError
+          when "rate_limit_error"
+            return ActAsAgent::Errors::Providers::TooManyRequestsError
           end
         end
 
