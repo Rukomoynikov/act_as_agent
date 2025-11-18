@@ -1,16 +1,18 @@
 # frozen_string_literal: true
 
 require "act_as_agent/errors/tool_incorrect_args_error"
+require "fileutils"
 
 module ActAsAgent
   module Tools
     class WriteFile
       ERROR = ActAsAgent::Errors::ToolIncorrectArgsError
 
-      attr_reader :file_path
+      attr_reader :file_path, :base_folder
 
-      def initialize(file_path: nil)
+      def initialize(file_path: nil, base_folder: nil)
         @file_path = file_path
+        @base_folder = base_folder
       end
 
       def name
@@ -34,20 +36,28 @@ module ActAsAgent
       end
 
       def call(args = {})
-        path = args.fetch("file_path", nil)
+        path = args.fetch("file_path", "")
         content = args.fetch("file_content", nil)
 
-        return write(path, content) unless path.nil? || path.chomp == ""
-        return write(path, content) unless file_path.nil?
+        return write(base_folder, path, content) unless path.chomp == ""
+        return write(base_folder, file_path, content) unless file_path.nil?
+        return write(nil, base_folder, content) unless base_folder.nil?
 
-        ERROR.new("Incorrect params have been given to list files tool")
+        ERROR.new("Incorrect params have been given to write file tool")
       end
 
       private
 
-      def write(path, content)
-        File.write(path, content)
+      def write(base_folder, path, content)
+        path = File.join(base_folder, path) unless base_folder.nil? || base_folder.chomp == ""
+        path = File.expand_path(path)
 
+        dir_level = path.end_with?("/") ? 0 : 1
+        FileUtils.mkdir_p(File.dirname(path, dir_level))
+
+        return if File.directory?(path)
+
+        File.write(path, content)
         File.read(path)
       end
     end
