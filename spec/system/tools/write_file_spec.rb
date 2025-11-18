@@ -19,32 +19,25 @@ RSpec.describe ActAsAgent::Tools::WriteFile, :vcr do
   context "when param path is passed" do
     describe "when glob parameter is passed" do
       let(:lookup_path) { File.join(__dir__, "../../files_for_agents/**/*.txt") }
-      let(:file_diary_path) { File.join(__dir__, "../../files_for_agents/diary.txt") }
-      let(:resulted_file_path) { File.join(__dir__, "../../files_for_agents/advice.txt") }
+      let(:react_app_folder) { "./tmp/#{rand(1000)}/" }
 
-      before do
-        allow_any_instance_of(
-          ActAsAgent::Tools::ReadFile
-        ).to receive(:call)
-          .and_return("I feel really good, but not sure about future.")
-      end
-
-      before do
-        File.delete(resulted_file_path) if File.exists?(resulted_file_path)
+      after do
+        FileUtils.rm_r(react_app_folder) if Dir.exist?(react_app_folder)
       end
 
       it "updates the file with new content" do
-        expect(File.exists?(resulted_file_path)).to be_falsey
-
         agent = MyDairyAgent.new
         agent.tools << ActAsAgent::Tools::ListFiles.new(root_folder: lookup_path)
         agent.tools << ActAsAgent::Tools::ReadFile.new
-        agent.tools << ActAsAgent::Tools::WriteFile.new
+        agent.tools << ActAsAgent::Tools::WriteFile.new(return_content: false, base_folder: react_app_folder)
 
-        result = agent.run(task: "Please read my files (it's my diary) and give me an advice. Then write it into a file.")
+        result = agent.run(task: "Please create a React app with Todo functionality")
 
-        expect(result["content"][0]["text"]).to match("I've read your diary and written my advice to a file!")
-        expect(File.exists?(resulted_file_path)).to be_truthy
+        expect(
+          result["content"][0]["text"]
+        ).to match(
+          "Perfect! I've created a fully functional React Todo app for you!"
+        )
       end
     end
   end

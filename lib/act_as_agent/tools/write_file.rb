@@ -21,7 +21,12 @@ module ActAsAgent
       end
 
       def description
-        "It writes content into file. If file doesn't exist it will create a new one. It accepts two parameters file_path and file_content. But file_path is optional as by default it will write into the file user want it to be saved"
+        "
+        It writes content into file. If file doesn't exist it will create a new one.
+        It accepts two parameters file_path and file_content.
+        But file_path is optional as by default it will write into the file
+        user want it to be saved.
+        "
       end
 
       def input_schema
