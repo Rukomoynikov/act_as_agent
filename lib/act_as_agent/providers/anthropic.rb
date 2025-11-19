@@ -5,6 +5,7 @@
 require "act_as_agent/api_clients/anthropic_api_client"
 require "act_as_agent/errors/providers/anthropic/authentication_error"
 require "act_as_agent/errors/providers/anthropic/too_many_requests_error"
+require "act_as_agent/errors/providers/anthropic/invalid_request_error"
 
 module ActAsAgent
   module Providers
@@ -37,6 +38,8 @@ module ActAsAgent
             return ActAsAgent::Errors::Providers::AuthenticationError
           when "rate_limit_error"
             return ActAsAgent::Errors::Providers::TooManyRequestsError
+          when "invalid_request_error"
+            return ActAsAgent::Errors::Providers::InvalidRequestError
           end
         end
 
