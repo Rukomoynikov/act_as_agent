@@ -42,7 +42,7 @@ module ActAsAgent
       end
 
       def call(args = {})
-        path = args.fetch("path", nil)
+        path = args.fetch("root_folder", nil)
 
         return list_files(path) unless path.nil? || path.chomp == ""
         return list_files(root_folder) unless root_folder.nil?

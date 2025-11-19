@@ -67,7 +67,7 @@ RSpec.describe ActAsAgent::Tools::ListFiles do
                          .new("Path is not absolute: #{looked_path}")
 
         expect(
-          subject.call({ "path" => looked_path })
+          subject.call({ "root_folder" => looked_path })
         ).to eq(expected_error)
       end
     end
@@ -89,7 +89,7 @@ RSpec.describe ActAsAgent::Tools::ListFiles do
 
       it "returns list of files" do
         expect(
-          subject.call({ "path" => looked_path }).length
+          subject.call({ "root_folder" => looked_path }).length
         ).to eq(2)
       end
     end
