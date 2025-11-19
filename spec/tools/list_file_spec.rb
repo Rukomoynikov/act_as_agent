@@ -38,6 +38,23 @@ RSpec.describe ActAsAgent::Tools::ListFiles do
           tool.call.length
         ).to eq(2)
       end
+
+      describe "it changes the description of the tool" do
+        it "adds root_folder path into description" do
+          tool = ActAsAgent::Tools::ListFiles.new(root_folder: looked_path)
+
+          expect(tool.description).to end_with("By default it will use #{looked_path}")
+        end
+      end
+
+      describe "it changes input_schema" do
+        it "adds root_folder path into description" do
+          tool = ActAsAgent::Tools::ListFiles.new(root_folder: looked_path)
+          input_schema_param_description = tool.input_schema.dig(:properties, :root_folder, :description)
+
+          expect(input_schema_param_description).to end_with("By default it will use #{looked_path}")
+        end
+      end
     end
   end
 

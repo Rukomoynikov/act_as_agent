@@ -18,18 +18,27 @@ module ActAsAgent
       end
 
       def description
-        "List files in the directory and all subdirectories. Pass the path to lookup"
+        <<~TEXT.chomp
+          List files in the directory and all subdirectories.
+          Pass the path to lookup.
+          Supports only absolute paths (e.g., /tmp/**/*.txt)
+          #{"By default it will use #{root_folder}" unless root_folder.to_s.empty?}
+        TEXT
       end
 
-      def input_schema
-        {
-          type: "object",
+      def input_schema # rubocop:disable Metrics/MethodLength
+        { type: "object",
           properties: {
-            root_folder: { type: "string",
-                           description: "The root folder of the list folder. By default it will use current folder." }
+            root_folder: {
+              type: "string",
+              description: <<~TEXT.chomp
+                The root folder of the list folder.
+                Can be only an absolute path (e.g., /tmp/**/*.txt)"
+                #{"By default it will use #{root_folder}" unless root_folder.to_s.empty?}
+              TEXT
+            }
           },
-          required: []
-        }
+          required: [] }
       end
 
       def call(args = {})
