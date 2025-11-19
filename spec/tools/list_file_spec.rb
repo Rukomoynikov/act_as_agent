@@ -37,4 +37,34 @@ RSpec.describe ActAsAgent::Tools::ListFiles do
       expect(subject.call).to eq(expected_error)
     end
   end
+
+  describe "when absolute path is provided" do
+    let(:tmp_dir) { Dir.mktmpdir }
+
+    before do
+      File.write(File.join(tmp_dir, "file1.txt"), "content1")
+      File.write(File.join(tmp_dir, "file2.txt"), "content2")
+    end
+
+    after do
+      FileUtils.rm_rf(tmp_dir)
+    end
+
+    it "lists files using absolute path" do
+      absolute_path = File.join(tmp_dir, "*.txt")
+      expect(absolute_path).to start_with("/")
+      result = subject.call({ "path" => absolute_path })
+      expect(result.length).to eq(2)
+      expect(result.all? { |f| f.start_with?("/") }).to be true
+    end
+  end
+
+  describe "when relative path is provided" do
+    it "lists files using relative path" do
+      relative_path = "spec/tools/*.rb"
+      result = subject.call({ "path" => relative_path })
+      expect(result.length).to be > 0
+      expect(result).to include(match(/read_file_spec\.rb$/))
+    end
+  end
 end

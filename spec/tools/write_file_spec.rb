@@ -95,4 +95,36 @@ RSpec.describe ActAsAgent::Tools::WriteFile do
 
     context "when file_path is provided for initializer"
   end
+
+  describe "when absolute path is provided" do
+    let(:tmp_dir) { Dir.mktmpdir }
+    let(:absolute_path) { File.join(tmp_dir, "test_absolute.txt") }
+    let(:tool) { ActAsAgent::Tools::WriteFile.new(return_content: true) }
+
+    after do
+      FileUtils.rm_rf(tmp_dir)
+    end
+
+    it "writes to file using absolute path" do
+      expect(absolute_path).to start_with("/")
+      result = tool.call({ "file_path" => absolute_path, "file_content" => after_file_content })
+      expect(result).to eq(after_file_content)
+      expect(File.exist?(absolute_path)).to be true
+    end
+  end
+
+  describe "when relative path is provided" do
+    let(:relative_path) { "./tmp/test_relative_#{rand(1000)}.txt" }
+    let(:tool) { ActAsAgent::Tools::WriteFile.new(return_content: true) }
+
+    after do
+      FileUtils.rm_f(relative_path)
+    end
+
+    it "writes to file using relative path" do
+      result = tool.call({ "file_path" => relative_path, "file_content" => after_file_content })
+      expect(result).to eq(after_file_content)
+      expect(File.exist?(relative_path)).to be true
+    end
+  end
 end

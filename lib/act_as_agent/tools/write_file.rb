@@ -26,15 +26,18 @@ module ActAsAgent
         It accepts two parameters file_path and file_content.
         But file_path is optional as by default it will write into the file
         user want it to be saved.
+        Supports both absolute paths (e.g., /tmp/file.txt) and relative paths (e.g., ./file.txt).
         "
       end
 
-      def input_schema
+      def input_schema # rubocop:disable Metrics/MethodLength
         {
           type: "object",
           properties: {
             file_path: { type: "string",
-                         description: "File path to write" },
+                         description: "File path to write. " \
+                                      "Can be an absolute path (e.g., /tmp/file.txt) " \
+                                      "or relative path (e.g., ./file.txt)" },
             file_content: { type: "string", description: "File content" }
           },
           required: ["file_content"]

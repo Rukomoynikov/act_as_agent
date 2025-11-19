@@ -18,7 +18,9 @@ module ActAsAgent
       end
 
       def description
-        "Read file by the given path"
+        "Read file by the given path. " \
+          "Accepts both absolute paths (e.g., /tmp/file.txt) " \
+          "and relative paths (e.g., ./file.txt)"
       end
 
       def input_schema
@@ -26,7 +28,9 @@ module ActAsAgent
           type: "object",
           properties: {
             file_path: { type: "string",
-                         description: "File path to read" }
+                         description: "File path to read. " \
+                                      "Can be an absolute path (e.g., /tmp/file.txt) " \
+                                      "or relative path (e.g., ./file.txt)" }
           },
           required: []
         }

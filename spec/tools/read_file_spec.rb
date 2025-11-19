@@ -22,4 +22,22 @@ RSpec.describe ActAsAgent::Tools::ReadFile do
       ).to eq(file_content)
     end
   end
+
+  describe "when absolute path is provided" do
+    it "reads the file using absolute path" do
+      expect(temp_file_path).to start_with("/")
+      expect(
+        subject.call({ "file_path" => temp_file_path })
+      ).to eq(file_content)
+    end
+  end
+
+  describe "when relative path is provided" do
+    let(:relative_file_path) { "spec/tools/read_file_spec.rb" }
+
+    it "reads the file using relative path" do
+      content = subject.call({ "file_path" => relative_file_path })
+      expect(content).to include("RSpec.describe ActAsAgent::Tools::ReadFile")
+    end
+  end
 end
