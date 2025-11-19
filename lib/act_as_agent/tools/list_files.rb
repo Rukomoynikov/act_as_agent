@@ -35,10 +35,20 @@ module ActAsAgent
       def call(args = {})
         path = args.fetch("path", nil)
 
-        return Dir.glob(path) unless path.nil? || path.chomp == ""
-        return Dir.glob(root_folder) unless root_folder.nil?
+        return list_files(path) unless path.nil? || path.chomp == ""
+        return list_files(root_folder) unless root_folder.nil?
 
         ERROR.new("Incorrect params have been given to list files tool")
+      end
+
+      private
+
+      def list_files(path)
+        return ERROR.new("Path is not absolute: #{path}") unless Pathname.new(path).absolute?
+
+        path = File.expand_path(path)
+
+        Dir.glob(path)
       end
     end
   end
