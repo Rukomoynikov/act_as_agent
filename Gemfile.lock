@@ -3,6 +3,7 @@ PATH
   specs:
     act_as_agent (0.4.0)
       act_as_api_client (~> 1.3.2)
+      rake (~> 13.0)
 
 GEM
   remote: https://rubygems.org/
@@ -85,7 +86,6 @@ PLATFORMS
 
 DEPENDENCIES
   act_as_agent!
-  rake (~> 13.0)
   rspec (~> 3.0)
   rubocop (~> 1.21)
   simplecov (~> 0.22.0)
