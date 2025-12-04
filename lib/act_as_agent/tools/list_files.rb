@@ -1,16 +1,18 @@
 # frozen_string_literal: true
 
 require "act_as_agent/errors/tool_incorrect_args_error"
+require "rake"
 
 module ActAsAgent
   module Tools
     class ListFiles
       ERROR = ActAsAgent::Errors::ToolIncorrectArgsError
 
-      attr_reader :root_folder
+      attr_reader :root_folder, :excluded_paths
 
-      def initialize(root_folder: nil)
+      def initialize(root_folder: nil, excluded_paths: [])
         @root_folder = root_folder
+        @excluded_paths = excluded_paths
       end
 
       def name
@@ -57,7 +59,20 @@ module ActAsAgent
 
         path = File.expand_path(path)
 
-        Dir.glob(path)
+        # p FileList[path]
+        # p Dir.glob(path)
+
+        FileList[path].exclude do |f|
+          excluded_paths.any? do |excluded_path|
+            # excluded_path = File.join(root_folder, excluded_path) unless File.absolute_path?(excluded_path) && root_folder.to_s != ""
+            # p excluded_path
+
+            File.fnmatch(excluded_path, f)
+            p File.fnmatch(excluded_path, f)
+            p excluded_path, f
+            # f.start_with?(excluded_path)
+          end
+        end
       end
     end
   end

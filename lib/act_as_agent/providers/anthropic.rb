@@ -71,6 +71,8 @@ module ActAsAgent
           end
         end
 
+        p tool_responses
+
         request(content: content + tool_responses) unless tool_responses.empty?
       end
       # rubocop:enable Metrics/MethodLength, Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity

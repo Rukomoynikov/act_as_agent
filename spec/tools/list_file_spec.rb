@@ -5,6 +5,30 @@ require "tmpdir"
 require "tempfile"
 
 RSpec.describe ActAsAgent::Tools::ListFiles do
+  context "when excluded_paths" do
+    let!(:tmp_dir) { Dir.mktmpdir }
+
+    let!(:tmp_file) { Tempfile.create("file1.txt", tmp_dir) }
+    let!(:nested_dir) { File.join(tmp_dir, "nested_dir") }
+
+    before do
+      Dir.mkdir(nested_dir)
+      Tempfile.create("file_nested.txt", nested_dir)
+    end
+
+    let(:looked_path) { File.join(tmp_dir, "**/*.*") }
+
+    context "given" do
+      it "excludes listed folders and files" do
+        tool = ActAsAgent::Tools::ListFiles.new(root_folder: looked_path, excluded_paths: [nested_dir, tmp_file.path])
+
+        expect(
+          tool.call.length
+        ).to eq(0)
+      end
+    end
+  end
+
   context "when root_folder is passed" do
     context "when param is relative" do
       let(:looked_path) { "./" }
